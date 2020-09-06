@@ -14,9 +14,12 @@ gem "turbolinks", "~> 5"
 gem "webpacker", "~> 4.0"
 
 group :development, :test do
+  gem "factory_bot_rails"
+  gem "faker"
   gem "pry-byebug"
   gem "pry-doc"
   gem "pry-rails"
+  gem "rspec-rails", "~> 4.0.1"
   gem "rubocop-rails"
   gem "rubocop-rspec"
 end
