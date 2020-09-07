@@ -1,0 +1,22 @@
+body {
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 50%;
+  margin-bottom: 100px;
+  margin-top: 60px;
+}
+
+.mb {
+  margin-bottom: 30px;
+}
+
+.button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  & .btn {
+    margin-bottom: 15px;
+  }
+}
