@@ -1,0 +1,104 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+@mixin container {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+@mixin center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.header {
+  @include container;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+
+  &__logo img,
+  &__list {
+    line-height: 60px;
+  }
+
+  &__list {
+    display: flex;
+    list-style: none;
+    &__item {
+      &:nth-child(2) {
+        margin-left: 15px;
+      }
+      & a {
+        text-decoration: none;
+        color: gray;
+      }
+    }
+  }
+}
+
+.mv {
+  background-image: url("/assets/hero.jpg");
+  height: 700px;
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  background-blend-mode: lighten;
+  position: relative;
+
+  &__text {
+    @include center;
+    & h2,
+    p {
+      color: rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+    & h2 {
+      font-weight: 200;
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    & p {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.description {
+  height: 270px;
+  @include container;
+  text-align: center;
+
+  &__title {
+    transform: translateX(-15px);
+    margin: 30px 0;
+  }
+
+  &__wrapper {
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__item {
+    & i {
+      font-size: 50px;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.footer {
+  height: 80px;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: relative;
+  & p {
+    @include center;
+    color: white;
+  }
+}
