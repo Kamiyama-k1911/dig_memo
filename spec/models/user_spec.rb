@@ -19,6 +19,46 @@
 #
 require "rails_helper"
 
-# RSpec.describe User, type: :model do
-#   # pending "add some examples to (or delete) #{__FILE__}"
-# end
+RSpec.describe User, type: :model do
+  context "ユーザーデータが全て入力されていた時" do
+    it "ユーザーデータ登録に成功する" do
+      user = build(:user)
+
+      expect(user).to be_valid
+    end
+  end
+
+  context "ユーザーの名前が空の時" do
+    it "ユーザーデータ登録に失敗する" do
+      user = build(:user, username: nil)
+
+      expect(user).to be_invalid
+      expect(user.errors.details[:username][0][:error]).to eq :blank
+    end
+  end
+
+  context "メールアドレスが空の時" do
+    it "ユーザーデータ登録に失敗する" do
+      user = build(:user, email: nil)
+      expect(user).to be_invalid
+    end
+  end
+
+  context "既に同じメールアドレスが存在していた時" do
+    before { create(:user, email: "tarotaro@example.com") }
+
+    it "ユーザーデータ登録に失敗する" do
+      user = build(:user, email: "tarotaro@example.com")
+
+      expect(user).to be_invalid
+      expect(user.errors.details[:email][0][:error]).to eq :taken
+    end
+  end
+
+  context "パスワードが空の時" do
+    it "ユーザーデータ登録に失敗する" do
+      user = build(:user, password: nil)
+      expect(user).to be_invalid
+    end
+  end
+end

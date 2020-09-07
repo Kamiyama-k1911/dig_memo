@@ -29,4 +29,7 @@
 class Article < ApplicationRecord
   belongs_to :user
   belongs_to :category
+
+  validates :title, presence: true
+  validates :body1, presence: true
 end
