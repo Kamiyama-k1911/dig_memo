@@ -8,7 +8,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-
   # def create
   #   super
   # end
