@@ -5,8 +5,8 @@
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-group mb">
-      <%= f.label :username, "ユーザー名" %><br />
-      <%= f.text_field :username, autofocus: true, autocomplete: "username",class: "form-control" %>
+      <%= f.label :email, "メールアドレス" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "form-control" %>
     </div>
 
     <div class="form-group mb">

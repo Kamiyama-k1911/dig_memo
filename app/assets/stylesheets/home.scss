@@ -14,33 +14,6 @@
   transform: translate(-50%, -50%);
 }
 
-.header {
-  @include container;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 60px;
-
-  &__logo img,
-  &__list {
-    line-height: 60px;
-  }
-
-  &__list {
-    display: flex;
-    list-style: none;
-    &__item {
-      &:nth-child(2) {
-        margin-left: 15px;
-      }
-      & a {
-        text-decoration: none;
-        color: gray;
-      }
-    }
-  }
-}
-
 .mv {
   background-image: url("/assets/hero.jpg");
   height: 700px;
