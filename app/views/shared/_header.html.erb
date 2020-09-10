@@ -2,8 +2,14 @@
 
 <header class="header">
   <div class="header__logo">
-    <%= link_to(root_path) do %>
-      <img src="/assets/logo.png" alt=""/>
+    <% if user_signed_in? %>
+      <%= link_to(articles_path) do %>
+        <img src="/assets/logo.png" alt=""/>
+      <% end %>
+    <% else %>
+      <%= link_to(root_path) do %>
+        <img src="/assets/logo.png" alt=""/>
+      <% end %>
     <% end %>
   </div>
   <% if user_signed_in? %>

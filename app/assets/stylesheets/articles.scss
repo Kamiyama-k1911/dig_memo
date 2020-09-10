@@ -1,3 +1,60 @@
 // Place all the styles related to the Articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  max-width: 90%;
+  margin: 50px auto;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.column-header {
+  flex: 1;
+  flex-direction: column;
+  max-width: 20%;
+  &__list {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  &__item {
+      &:nth-child(2) {
+        margin: 0;
+      }
+    & a {
+      text-decoration: none;
+      color: white;
+    }
+   }
+  }
+}
+
+.main {
+  flex: 4;
+
+  & .list-group-item {
+    display: flex;
+    justify-content: space-between;
+
+    & ul {
+      display: flex;
+    }
+  }
+}
+
+.new-form {
+  flex: 4;
+  max-width: 50%;
+  margin: 0 auto;
+}

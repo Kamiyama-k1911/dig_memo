@@ -11,14 +11,22 @@
   </head>
 
   <body>
-    <%= render partial: "shared/header" %>
-
     <% if flash[:notice] %>
       <p class="alert alert-success mb-0"><%= flash[:notice] %></p>
     <% elsif flash[:alert] %>
       <p class="alert alert-danger mb-0"><%= flash[:alert] %></p>
     <% end %>
 
-    <%= yield %>
+    <% if user_signed_in? %>
+      <div class="container mb" style="max-width: 90%">
+        <div class="flex">
+          <%= render partial: "shared/side-header"%>
+          <%= yield %>
+        </div>
+      </div>
+    <% else %>
+      <%= yield %>
+    <% end %>
+
   </body>
 </html>
