@@ -1,2 +1,21 @@
-<h1>Articles#index</h1>
-<p>Find me in app/views/articles/index.html.erb</p>
+<main class="main">
+  <% @articles.each do |article| %>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <p><%= article.title %></p>
+        <p><%= article.updated_at %></p>
+        <ul>
+          <li>
+            <a href="#"><i class="fas fa-edit"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-trash"></i></a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  <% end %>
+</main> 
+
+
+  

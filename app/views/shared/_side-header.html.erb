@@ -1,0 +1,21 @@
+<header class="column-header">
+  <div class="column-header__logo mb-4">
+    <%= link_to(articles_path) do %>
+      <img src="/assets/logo.png" alt=""/>
+    <% end %>
+  </div>
+  <nav>
+    <ul class="column-header__list">
+      <li class="column-header__list__item mb-4">
+        <%= link_to(new_article_path, class: "btn btn-primary") do %>
+          <i class="fas fa-pen mr-2"></i>投稿
+        <% end %>
+      </li>
+      <li class="column-header__list__item mb-4">
+        <%= link_to(destroy_user_session_path, method: :delete, class: "btn btn-warning", data: {confirm: "ログアウトしますか？"}) do %>
+          <i class="fas fa-user-alt-slash mr-2"></i>ログアウト
+        <% end %>
+      </li>
+    </ul>
+  </nav>
+</header>
