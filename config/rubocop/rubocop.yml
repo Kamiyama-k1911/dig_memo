@@ -98,7 +98,8 @@ Lint/UnusedMethodArgument:
 # TODO: select は引数が無い (ブロックのみ) の場合にだけチェックする
 # ようにすると誤検知がほぼ無くなる？
 Lint/Void:
-  CheckForMethodsWithNoSideEffects: true
+  # CheckForMethodsWithNoSideEffects: true
+  Enabled: false
 
 #################### Metrics ###############################
 

@@ -9,6 +9,27 @@
 #
 FactoryBot.define do
   factory :category do
-    name { nil }
+    id { 1 }
+    name { "学び" }
+  end
+
+  factory :learn, class: "Category" do
+    id { 1 }
+    name { "学び" }
+  end
+
+  factory :impression, class: "Category" do
+    id { 2 }
+    name { "感想" }
+  end
+
+  factory :answer, class: "Category" do
+    id { 3 }
+    name { "質問への回答" }
+  end
+
+  factory :other, class: "Category" do
+    id { 4 }
+    name { "その他" }
   end
 end
