@@ -4,10 +4,14 @@
       <h5 class="card-title"><%= @article.title %></h5>
       <ul>
         <li>
-          <a href="#"><i class="fas fa-edit"></i></a>
+          <%= link_to(edit_article_path(@article)) do %>
+            <i class="fas fa-edit fa-2x"></i>
+          <% end %>
         </li>
         <li>
-          <a href="#"><i class="fas fa-trash"></i></a>
+          <%= link_to(article_path(@article),method: :delete, class: "destroy", data: {confirm: "投稿を削除しますか？"}) do %>
+            <i class="fas fa-trash fa-2x"></i>
+          <% end %>
         </li>
       </ul>
     </div>
