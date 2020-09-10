@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Articles", type: :feature do
+RSpec.describe "Articles", js: true, type: :feature do
   before do
     create(:satoshi)
     create(:learn)
@@ -9,7 +9,7 @@ RSpec.describe "Articles", type: :feature do
     create(:other)
   end
 
-  it "新規投稿する" do
+  it "新規投稿し、それを削除する" do
     visit new_user_session_path
 
     fill_in "メールアドレス", with: "satoshi@example.com"
@@ -26,6 +26,12 @@ RSpec.describe "Articles", type: :feature do
 
     expect(page).to have_content "こんにちは"
     expect(page).to have_current_path articles_path, ignore_query: true
+
+    accept_confirm do
+      find(".destroy").click
+    end
+
+    expect(page).to have_content "投稿を削除しました！"
   end
 
   it "投稿詳細が取得できる" do

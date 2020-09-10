@@ -25,6 +25,14 @@ class ArticlesController < ApplicationController
   def edit
   end
 
+  def destroy
+    @article = Article.find(params[:id])
+
+    @article.destroy!
+    flash[:alert] = "投稿を削除しました！"
+    redirect_to articles_path
+  end
+
   private
 
     def article_params
