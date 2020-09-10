@@ -4,12 +4,10 @@
 
 li {
   list-style: none;
-}
-
-a {
+  a {
   text-decoration: none;
+  }
 }
-
 .container {
   max-width: 90%;
   margin: 50px auto;
@@ -18,6 +16,9 @@ a {
 .flex {
   display: flex;
   justify-content: space-between;
+  & ul {
+    display: flex;
+  }
 }
 
 .column-header {
@@ -53,8 +54,11 @@ a {
   }
 }
 
-.new-form {
+.new-form, .card {
   flex: 4;
   max-width: 50%;
   margin: 0 auto;
 }
+
+
+  
