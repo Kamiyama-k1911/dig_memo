@@ -1,2 +1,16 @@
-<h1>Articles#show</h1>
-<p>Find me in app/views/articles/show.html.erb</p>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <div class="flex">
+      <h5 class="card-title"><%= @article.title %></h5>
+      <ul>
+        <li>
+          <a href="#"><i class="fas fa-edit"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fas fa-trash"></i></a>
+        </li>
+      </ul>
+    </div>
+    <p class="card-text"><%= @article.body1 %></p>
+  </div>
+</div>
