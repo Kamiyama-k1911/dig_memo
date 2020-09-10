@@ -28,7 +28,7 @@ RSpec.describe "Articles", js: true, type: :feature do
     expect(page).to have_current_path articles_path, ignore_query: true
 
     accept_confirm do
-      find('.destroy').click
+      find(".destroy").click
     end
 
     expect(page).to have_content "投稿を削除しました！"
