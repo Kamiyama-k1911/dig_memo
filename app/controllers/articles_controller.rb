@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @articles = current_user.articles.all
   end
@@ -20,9 +22,30 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+
+    if @article.user != current_user
+      flash[:alert] = "他のユーザーの投稿を見ることはできません！"
+      redirect_to articles_path
+    end
   end
 
   def edit
+    @article = Article.find(params[:id])
+    if @article.user != current_user
+      flash[:alert] = "他のユーザーの投稿は編集できません！"
+      redirect_to articles_path
+    end
+  end
+
+  def update
+    @article = Article.find(params[:id])
+
+    if @article.update(update_article_params)
+      flash[:notice] = "投稿を編集しました！"
+      redirect_to articles_path
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -37,5 +60,9 @@ class ArticlesController < ApplicationController
 
     def article_params
       params.require(:article).permit(:title, :body1, :body2, :body3, :body4, :body5, :body6, :body7, :category_id, :user_id)
+    end
+
+    def update_article_params
+      params.require(:article).permit(:title, :body1, :body2, :body3, :body4, :body5, :body6, :body7, :category_id)
     end
 end

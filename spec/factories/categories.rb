@@ -9,8 +9,7 @@
 #
 FactoryBot.define do
   factory :category do
-    id { 1 }
-    name { "学び" }
+    name { nil }
   end
 
   factory :learn, class: "Category" do

@@ -1,56 +1,92 @@
 require "rails_helper"
 
 RSpec.describe "Articles", js: true, type: :feature do
-  before do
-    create(:satoshi)
-    create(:learn)
-    create(:impression)
-    create(:answer)
-    create(:other)
-  end
+  describe "自分の投稿の操作" do
+    before do
+      create(:satoshi)
+      create(:learn)
+      create(:impression)
+      create(:answer)
+      create(:other)
 
-  it "新規投稿し、それを削除する" do
-    visit new_user_session_path
+      visit new_user_session_path
 
-    fill_in "メールアドレス", with: "satoshi@example.com"
-    fill_in "パスワード", with: "satoshi1290"
-    click_button "ログイン"
-
-    visit new_article_path
-
-    select "その他", from: "article[category_id]"
-    fill_in "タイトル", with: "こんにちは"
-    fill_in "内容1", with: "よろしくお願いします"
-
-    click_button "投稿する"
-
-    expect(page).to have_content "こんにちは"
-    expect(page).to have_current_path articles_path, ignore_query: true
-
-    accept_confirm do
-      find(".destroy").click
+      fill_in "メールアドレス", with: "satoshi@example.com"
+      fill_in "パスワード", with: "satoshi1290"
+      click_button "ログイン"
     end
 
-    expect(page).to have_content "投稿を削除しました！"
+    it "新規投稿→投稿編集→投稿削除" do
+      visit new_article_path
+
+      select "その他", from: "article[category_id]"
+      fill_in "タイトル", with: "こんにちは"
+      fill_in "内容1", with: "よろしくお願いします"
+
+      click_button "投稿する"
+
+      expect(page).to have_content "こんにちは"
+      expect(page).to have_current_path articles_path, ignore_query: true
+
+      visit edit_article_path(Article.find_by(title: "こんにちは"))
+
+      fill_in "タイトル", with: "こんばんは"
+
+      click_button "編集する"
+
+      expect(page).to have_content "こんばんは"
+      expect(page).to have_content "投稿を編集しました！"
+
+      accept_confirm do
+        find(".destroy").click
+      end
+
+      expect(page).to have_content "投稿を削除しました！"
+    end
+
+    it "投稿詳細が取得できる" do
+      visit new_article_path
+
+      select "その他", from: "article[category_id]"
+      fill_in "タイトル", with: "こんにちは"
+      fill_in "内容1", with: "よろしくお願いします"
+
+      click_button "投稿する"
+
+      visit article_path(Article.find_by(title: "こんにちは"))
+      expect(page).to have_content "こんにちは"
+      expect(page).to have_current_path article_path(Article.find_by(title: "こんにちは")), ignore_query: true
+    end
   end
 
-  it "投稿詳細が取得できる" do
-    visit new_user_session_path
+  describe "他のユーザーの投稿を操作しようとする" do
+    before do
+      create(:satoshi)
+      create(:takeshi_article)
+      create(:learn)
+      create(:impression)
+      create(:answer)
+      create(:other)
 
-    fill_in "メールアドレス", with: "satoshi@example.com"
-    fill_in "パスワード", with: "satoshi1290"
-    click_button "ログイン"
+      visit new_user_session_path
 
-    visit new_article_path
+      fill_in "メールアドレス", with: "satoshi@example.com"
+      fill_in "パスワード", with: "satoshi1290"
+      click_button "ログイン"
+    end
 
-    select "その他", from: "article[category_id]"
-    fill_in "タイトル", with: "こんにちは"
-    fill_in "内容1", with: "よろしくお願いします"
+    it "他のユーザーの投稿を編集できない" do
+      visit edit_article_path(1)
 
-    click_button "投稿する"
+      expect(page).to have_content "他のユーザーの投稿は編集できません！"
+      expect(page).to have_current_path articles_path
+    end
 
-    visit article_path(Article.find_by(title: "こんにちは"))
-    expect(page).to have_content "こんにちは"
-    expect(page).to have_current_path article_path(Article.find_by(title: "こんにちは")), ignore_query: true
+    it "他のユーザーの投稿詳細を見ることができない" do
+      visit article_path(1)
+
+      expect(page).to have_content "他のユーザーの投稿を見ることはできません！"
+      expect(page).to have_current_path articles_path
+    end
   end
 end

@@ -5,12 +5,15 @@ ruby "2.7.1"
 
 gem "bootsnap", ">= 1.4.2", require: false
 gem "bootstrap", "~> 5.0.0.alpha1"
+gem "capybara", ">= 2.15"
 gem "devise"
 gem "jquery-rails"
 gem "pg"
 gem "puma", "~> 4.1"
 gem "rails", "~> 6.0.3", ">= 6.0.3.2"
+gem "selenium-webdriver"
 gem "turbolinks", "~> 5"
+gem "webdrivers"
 gem "webpacker", "~> 4.0"
 
 group :development, :test do
@@ -32,12 +35,6 @@ group :development do
   gem "annotate"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
-end
-
-group :test do
-  gem "capybara", ">= 2.15"
-  gem "selenium-webdriver"
-  gem "webdrivers"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
