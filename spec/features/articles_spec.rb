@@ -89,4 +89,38 @@ RSpec.describe "Articles", js: true, type: :feature do
       expect(page).to have_current_path articles_path
     end
   end
+
+  describe "カテゴリー別に分けられるか" do
+    before do
+      create(:satoshi, id: 1)
+      create(:learn)
+      create(:impression)
+      create(:answer)
+      create(:other)
+      create(:learn_article, user_id: 1, category_id: 1)
+      create(:impression_article, user_id: 1, category_id: 2)
+      create(:answer_article, user_id: 1, category_id: 3)
+      create(:other_article, user_id: 1, category_id: 4)
+
+      visit new_user_session_path
+
+      fill_in "メールアドレス", with: "satoshi@example.com"
+      fill_in "パスワード", with: "satoshi1290"
+      click_button "ログイン"
+    end
+
+    it "カテゴリー分けできる" do
+      click_link "学び"
+      expect(page).to have_content "学び！"
+
+      click_link "感想"
+      expect(page).to have_content "感想！"
+
+      click_link "質問への回答"
+      expect(page).to have_content "質問への回答！"
+
+      click_link "その他"
+      expect(page).to have_content "その他！"
+    end
+  end
 end

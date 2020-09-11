@@ -16,6 +16,26 @@
           <i class="fas fa-user-alt-slash mr-2"></i>ログアウト
         <% end %>
       </li>
+      <li>
+        <ul class="list-group" style="max-width: 80%">
+          <li class="list-group-item active">カテゴリー</li>
+          <li class="list-group-item">
+            <%= link_to("一覧",articles_path )%>
+          </li>
+          <li class="list-group-item">
+            <%= link_to("学び",categories_path(:category_id => 1) )%>
+          </li>
+          <li class="list-group-item">
+            <%= link_to("感想",categories_path(:category_id => 2) )%>
+          </li>
+          <li class="list-group-item">
+            <%= link_to("質問への回答",categories_path(:category_id => 3) )%>
+          </li>
+          <li class="list-group-item">
+            <%= link_to("その他",categories_path(:category_id => 4) )%>
+          </li>
+        </ul>
+      </li>
     </ul>
   </nav>
 </header>
