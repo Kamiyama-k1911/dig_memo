@@ -33,4 +33,12 @@ FactoryBot.define do
     user
     category
   end
+
+  factory :takeshi_article, class: "Article" do
+    id { 1 }
+    title { Faker::Lorem.word }
+    body1 { Faker::Lorem.sentence }
+    association :user, factory: :takeshi
+    category
+  end
 end
