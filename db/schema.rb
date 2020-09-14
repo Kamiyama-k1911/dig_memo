@@ -10,20 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_06_160558) do
+ActiveRecord::Schema.define(version: 2020_09_14_074851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "article_items", force: :cascade do |t|
+    t.integer "question"
+    t.text "body"
+    t.bigint "article_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["article_id"], name: "index_article_items_on_article_id"
+  end
+
   create_table "articles", force: :cascade do |t|
     t.string "title"
-    t.text "body1"
-    t.text "body2"
-    t.text "body3"
-    t.text "body4"
-    t.text "body5"
-    t.text "body6"
-    t.text "body7"
     t.bigint "user_id", null: false
     t.bigint "category_id"
     t.datetime "created_at", precision: 6, null: false
@@ -51,6 +53,7 @@ ActiveRecord::Schema.define(version: 2020_09_06_160558) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "article_items", "articles"
   add_foreign_key "articles", "categories"
   add_foreign_key "articles", "users"
 end
