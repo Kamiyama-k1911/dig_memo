@@ -3,13 +3,6 @@
 # Table name: articles
 #
 #  id          :bigint           not null, primary key
-#  body1       :text
-#  body2       :text
-#  body3       :text
-#  body4       :text
-#  body5       :text
-#  body6       :text
-#  body7       :text
 #  title       :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
@@ -29,7 +22,7 @@
 class Article < ApplicationRecord
   belongs_to :user
   belongs_to :category, optional: true
+  has_many :article_items, dependent: :destroy
 
   validates :title, presence: true
-  validates :body1, presence: true
 end
