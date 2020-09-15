@@ -7,14 +7,20 @@ class ArticlesController < ApplicationController
 
   def new
     @article = Article.new
+    @article_item = ArticleItem.new
   end
 
   def create
     @article = current_user.articles.build(article_params)
-
+    
     if @article.save
+      @article_item = @article.article_items.build(article_item_params[:article_item]) 
+      
+      if @article_item.save
+
       flash[:notice] = "新規投稿しました！"
       redirect_to articles_path
+      end
     else
       render :new
     end
@@ -59,10 +65,14 @@ class ArticlesController < ApplicationController
   private
 
     def article_params
-      params.require(:article).permit(:title, :body1, :body2, :body3, :body4, :body5, :body6, :body7, :category_id, :user_id)
+      params.require(:article).permit(:title, :category_id, :user_id)
+    end
+
+    def article_item_params
+      params.require(:article).permit(article_item:[:question, :body])
     end
 
     def update_article_params
-      params.require(:article).permit(:title, :body1, :body2, :body3, :body4, :body5, :body6, :body7, :category_id)
+      params.require(:article).permit(:title, :category_id)
     end
 end
