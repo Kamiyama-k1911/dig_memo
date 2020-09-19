@@ -12,15 +12,13 @@ class ArticlesController < ApplicationController
 
   def create
     @article = current_user.articles.build(article_params)
-    
-    if @article.save
-      @article_item = @article.article_items.build(article_item_params[:article_item]) 
-      
-      if @article_item.save
 
+    if @article.save
+      params[:items].each do |item|
+        @article_item = @article.article_items.create!(question: item[1][0], body: item[1][1])
+      end
       flash[:notice] = "新規投稿しました！"
       redirect_to articles_path
-      end
     else
       render :new
     end
@@ -37,6 +35,8 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
+    @article_items = @article.article_items
+
     if @article.user != current_user
       flash[:alert] = "他のユーザーの投稿は編集できません！"
       redirect_to articles_path
@@ -45,8 +45,20 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find(params[:id])
+    @article_items = @article.article_items
 
     if @article.update(update_article_params)
+
+      i = 0
+      params[:items].each do |item|
+        if @article_items.length < i + 1
+          @article_items.create!(question: item[1][0], body: item[1][1])
+        else
+          @article_items[i].update!(question: item[1][0], body: item[1][1])
+        end
+        i += 1
+      end
+
       flash[:notice] = "投稿を編集しました！"
       redirect_to articles_path
     else
@@ -62,6 +74,13 @@ class ArticlesController < ApplicationController
     redirect_to articles_path
   end
 
+  def article_item_destroy
+    @article = Article.find(params[:id])
+    @article_items = @article.article_items
+
+    @article_items.last.destroy!
+  end
+
   private
 
     def article_params
@@ -69,7 +88,7 @@ class ArticlesController < ApplicationController
     end
 
     def article_item_params
-      params.require(:article).permit(article_item:[:question, :body])
+      params.require(:items).permit(:item1, :item2, :item3, :item4, :item5, :item6, :item7)
     end
 
     def update_article_params

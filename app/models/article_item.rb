@@ -26,7 +26,7 @@ class ArticleItem < ApplicationRecord
     what: 4,
     summary: 5,
     application: 6,
-    other: 7
+    other: 7,
   }, _prefix: true
   belongs_to :article
 end

@@ -1,7 +1,7 @@
 <div class="card" style="width: 18rem;">
   <div class="card-body">
     <div class="flex">
-      <h5 class="card-title"><%= @article.title %></h5>
+      <h3 class="card-title"><%= @article.title %></h5>
       <ul>
         <li>
           <%= link_to(edit_article_path(@article)) do %>
@@ -15,6 +15,13 @@
         </li>
       </ul>
     </div>
-    <p class="card-text"><%= @article.body1 %></p>
+    <ul class="article-item-list">
+      <% @article.article_items.each do |article_item| %>
+        <li class="article-item-list__item">
+          <h5 class="card-title"><%= article_item.question %></h5>
+          <p class="card-text"><%= article_item.body %></p>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </div>

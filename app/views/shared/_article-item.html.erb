@@ -1,0 +1,11 @@
+<div class="form-group mb" style="max-width: 30%">
+  <%= f.label :question, "問い" %>
+  <%= f.select :question, ArticleItem.question.keys.to_a, { include_blank: "選択して下さい" },{ class: "form-control custom-select" } %>
+</div>
+
+<div class="form-group mb">
+  <%= f.label :body, "タイトル" %><br />
+  <%= f.text_field :body, autofocus: true, autocomplete: "body",class: "form-control" %>
+</div>
+
+  
