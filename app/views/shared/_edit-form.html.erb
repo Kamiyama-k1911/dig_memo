@@ -18,7 +18,7 @@
         <div class="form-group mb">
           <li class="item-form__list" style="width: 100%">
             <%= item.label :question, "問い#{num+1}", class:"mt-3" %>
-            <%= item.select :question, ArticleItem.questions.keys.to_a, { include_blank: "選択して下さい" },{ name: "items[item#{num+1}][]", class: "form-control custom-select" } %> 
+            <%= item.select :question, ArticleItem.questions_i18n.invert, { include_blank: "選択して下さい" },{ name: "items[item#{num+1}][]", class: "form-control custom-select" } %> 
 
             <%= item.label :body, "内容#{num+1}" %>
             <%= item.text_area :body, name: "items[item#{num+1}][]", autofocus: true, autocomplete: "body",class: "form-control" %>

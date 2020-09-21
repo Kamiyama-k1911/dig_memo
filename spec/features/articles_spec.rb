@@ -98,10 +98,10 @@ RSpec.describe "Articles", js: true, type: :feature do
       fill_in "タイトル", with: "こんにちは"
       click_button "問い+"
 
-      select "why", from: "items[item1][]"
+      select "なぜ？", from: "items[item1][]"
       fill_in "items[item1][]", with: "なぜこんにちはと言うのか？"
 
-      select "where", from: "items[item2][]"
+      select "どこで？", from: "items[item2][]"
       fill_in "items[item2][]", with: "ドイツ語でこんにちははなんと言うのか？"
 
       click_button "投稿する"
@@ -114,9 +114,9 @@ RSpec.describe "Articles", js: true, type: :feature do
 
       # 投稿詳細画面
       expect(page).to have_content "こんにちは"
-      expect(page).to have_content "why"
+      expect(page).to have_content "なぜ？"
       expect(page).to have_content "なぜこんにちはと言うのか？"
-      expect(page).to have_content "where"
+      expect(page).to have_content "どこで？"
       expect(page).to have_content "ドイツ語でこんにちははなんと言うのか？"
       expect(page).to have_current_path article_path(Article.find_by(title: "こんにちは")), ignore_query: true
     end
@@ -129,10 +129,10 @@ RSpec.describe "Articles", js: true, type: :feature do
       fill_in "タイトル", with: "こんにちは"
       click_button "問い+"
 
-      select "why", from: "items[item1][]"
+      select "なぜ？", from: "items[item1][]"
       fill_in "items[item1][]", with: "なぜこんにちはと言うのか？"
 
-      select "where", from: "items[item2][]"
+      select "どこで？", from: "items[item2][]"
       fill_in "items[item2][]", with: "ドイツ語でこんにちははなんと言うのか？"
 
       click_button "投稿する"
@@ -146,7 +146,7 @@ RSpec.describe "Articles", js: true, type: :feature do
       # 投稿編集画面
       click_button "問い+"
 
-      select "who", from: "items[item3][]"
+      select "誰？", from: "items[item3][]"
       fill_in "items[item3][]", with: "こんにちはは誰が作った言葉なのか？"
 
       click_button "編集する"
@@ -157,11 +157,11 @@ RSpec.describe "Articles", js: true, type: :feature do
 
       # 投稿詳細画面
       expect(page).to have_content "こんにちは"
-      expect(page).to have_content "why"
+      expect(page).to have_content "なぜ？"
       expect(page).to have_content "なぜこんにちはと言うのか？"
-      expect(page).to have_content "where"
+      expect(page).to have_content "どこで？"
       expect(page).to have_content "ドイツ語でこんにちははなんと言うのか？"
-      expect(page).to have_content "who"
+      expect(page).to have_content "誰？"
       expect(page).to have_content "こんにちはは誰が作った言葉なのか？"
     end
 
@@ -173,10 +173,10 @@ RSpec.describe "Articles", js: true, type: :feature do
       fill_in "タイトル", with: "こんにちは"
       click_button "問い+"
 
-      select "why", from: "items[item1][]"
+      select "なぜ？", from: "items[item1][]"
       fill_in "items[item1][]", with: "なぜこんにちはと言うのか？"
 
-      select "where", from: "items[item2][]"
+      select "どこで？", from: "items[item2][]"
       fill_in "items[item2][]", with: "ドイツ語でこんにちははなんと言うのか？"
 
       click_button "投稿する"
@@ -200,7 +200,7 @@ RSpec.describe "Articles", js: true, type: :feature do
 
       # 投稿詳細画面
       expect(page).not_to have_content "ドイツ語でこんにちははなんと言うのか？"
-      expect(page).not_to have_content "where"
+      expect(page).not_to have_content "どこで？"
     end
 
     context "他のユーザーの投稿を操作しようとした場合" do
