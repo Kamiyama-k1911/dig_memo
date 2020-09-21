@@ -17,6 +17,11 @@
         <% end %>
       </li>
       <li class="column-header__list__item mb-4">
+        <%= link_to(edit_user_registration_path, class: "btn btn-info") do %>
+          <i class="fas fa-user mr-2"></i>ユーザー情報
+        <% end %>
+      </li>
+      <li class="column-header__list__item mb-4">
         <%= link_to(destroy_user_session_path, method: :delete, class: "btn btn-warning", data: {confirm: "ログアウトしますか？"}) do %>
           <i class="fas fa-user-alt-slash mr-2"></i>ログアウト
         <% end %>
