@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     sessions: "users/sessions",
   }
   delete "article_item/:id", to: "articles#article_item_destroy", as: :article_item_destroy
+  get "search", to: "articles#search", as: :search
   resources :articles
   # resources :articles do
   #   member do

@@ -1,4 +1,4 @@
-<%= form_with model: article do |f| %>
+<%= form_with model: article, local: true do |f| %>
   <div class="form-group mb" style="max-width: 30%">
     <%= f.label :category_id, "カテゴリー" %>
     <%= f.select :category_id, [["学び",1],["感想",2],["質問への回答",3],["その他",4]], { include_blank: "選択して下さい" },{ class: "form-control custom-select" } %>

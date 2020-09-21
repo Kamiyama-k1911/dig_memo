@@ -81,6 +81,10 @@ class ArticlesController < ApplicationController
     @article_items.last.destroy!
   end
 
+  def search
+    @articles = current_user.articles.search(params[:search_word])
+  end
+
   private
 
     def article_params

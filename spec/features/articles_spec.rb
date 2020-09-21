@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "Articles", js: true, type: :feature do
   describe "自分の投稿の操作" do
     before do
-      create(:satoshi)
+      create(:satoshi, id: 1)
       create(:learn)
       create(:impression)
       create(:answer)
@@ -16,7 +16,7 @@ RSpec.describe "Articles", js: true, type: :feature do
       click_button "ログイン"
     end
 
-    it "新規投稿→投稿編集→投稿削除" do
+    it "新規投稿ができる" do
       visit new_article_path
 
       select "その他", from: "article[category_id]"
@@ -26,21 +26,51 @@ RSpec.describe "Articles", js: true, type: :feature do
 
       expect(page).to have_content "こんにちは"
       expect(page).to have_current_path articles_path, ignore_query: true
+    end
 
-      visit edit_article_path(Article.find_by(title: "こんにちは"))
+    context "投稿が存在する場合" do
+      before do
+        visit new_article_path
 
-      fill_in "タイトル", with: "こんばんは"
+        select "その他", from: "article[category_id]"
+        fill_in "タイトル", with: "こんにちは"
 
-      click_button "編集する"
-
-      expect(page).to have_content "こんばんは"
-      expect(page).to have_content "投稿を編集しました！"
-
-      accept_confirm do
-        find(".destroy").click
+        click_button "投稿する"
       end
 
-      expect(page).to have_content "投稿を削除しました！"
+      it "タイトル編集ができる" do
+        visit edit_article_path(Article.find_by(title: "こんにちは"))
+
+        fill_in "タイトル", with: "こんばんは"
+
+        click_button "編集する"
+
+        expect(page).to have_content "こんばんは"
+        expect(page).to have_content "投稿を編集しました！"
+      end
+
+      it "投稿削除ができる" do
+        accept_confirm do
+          find(".destroy").click
+        end
+
+        expect(page).to have_content "投稿を削除しました！"
+      end
+
+      context "投稿が複数存在する時" do
+        before do
+          create(:satoshi_article_1, user_id: 1)
+          create(:satoshi_article_2, user_id: 1)
+        end
+
+        it "検索が機能する" do
+          fill_in "検索フォーム", with: "ポケモン"
+          click_button "検索"
+
+          expect(page).to have_content "ポケモン"
+          expect(page).not_to have_content "デジモン"
+        end
+      end
     end
 
     it "投稿詳細が取得できる" do
@@ -172,36 +202,25 @@ RSpec.describe "Articles", js: true, type: :feature do
       expect(page).not_to have_content "ドイツ語でこんにちははなんと言うのか？"
       expect(page).not_to have_content "where"
     end
-  end
 
-  describe "他のユーザーの投稿を操作しようとする" do
-    before do
-      create(:satoshi)
-      create(:takeshi_article)
-      create(:learn)
-      create(:impression)
-      create(:answer)
-      create(:other)
+    context "他のユーザーの投稿を操作しようとした場合" do
+      before do
+        create(:takeshi_article)
+      end
 
-      visit new_user_session_path
+      it "他のユーザーの投稿を編集できない" do
+        visit edit_article_path(1)
 
-      fill_in "メールアドレス", with: "satoshi@example.com"
-      fill_in "パスワード", with: "satoshi1290"
-      click_button "ログイン"
-    end
+        expect(page).to have_content "他のユーザーの投稿は編集できません！"
+        expect(page).to have_current_path articles_path
+      end
 
-    it "他のユーザーの投稿を編集できない" do
-      visit edit_article_path(1)
+      it "他のユーザーの投稿詳細を見ることができない" do
+        visit article_path(1)
 
-      expect(page).to have_content "他のユーザーの投稿は編集できません！"
-      expect(page).to have_current_path articles_path
-    end
-
-    it "他のユーザーの投稿詳細を見ることができない" do
-      visit article_path(1)
-
-      expect(page).to have_content "他のユーザーの投稿を見ることはできません！"
-      expect(page).to have_current_path articles_path
+        expect(page).to have_content "他のユーザーの投稿を見ることはできません！"
+        expect(page).to have_current_path articles_path
+      end
     end
   end
 

@@ -4,6 +4,11 @@
       <img src="/assets/logo.png" alt=""/>
     <% end %>
   </div>
+  <%= form_with url: search_path, method: :get, local: true, class: "mb-5" do |f| %>
+    <h5><i class="fas fa-search mr-2"></i><%= f.label :search_word, "検索フォーム" %></h5>
+    <%= f.text_field :search_word, class: "form-control w-75 mb-3" %>
+    <%= f.submit "検索", class: "btn btn-primary" %>
+  <% end %>
   <nav>
     <ul class="column-header__list">
       <li class="column-header__list__item mb-4">
