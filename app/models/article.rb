@@ -25,4 +25,10 @@ class Article < ApplicationRecord
   has_many :article_items, dependent: :destroy
 
   validates :title, presence: true
+
+  def self.search(search)
+    if search
+      Article.where(["title LIKE ?", "%#{search}%"])
+    end
+  end
 end
