@@ -11,6 +11,6 @@ RSpec.describe "Resistrations", type: :feature do
 
     click_on "登録する"
 
-    expect(page).to have_content "Welcome! You have signed up successfully."
+    expect(page).to have_content "アカウント登録が完了しました。"
   end
 end

@@ -12,14 +12,14 @@ $(document).on('turbolinks:load', function(){
     <li class="item-form__list" style="width: 100%">
       <label class="mt-3" for="article_question">問い`+ i +`</label>
       <select name="items[item`+i+`][]" class="form-control custom-select" id="article_question"><option value="">選択して下さい</option>
-      <option value="why">why</option>
-      <option value="how">how</option>
-      <option value="who">who</option>
-      <option value="where">where</option>
-      <option value="what">what</option>
-      <option value="summary">summary</option>
-      <option value="application">application</option>
-      <option value="other">other</option></select>
+      <option value="why">なぜ？</option>
+      <option value="how">どうやって？</option>
+      <option value="who">誰？</option>
+      <option value="where">どこで？</option>
+      <option value="what">何？</option>
+      <option value="summary">一言で言うと？</option>
+      <option value="application">どうやって応用する？</option>
+      <option value="other">その他</option></select>
 
       <label for="article_body">内容`+ i +`</label>
       <textarea name="items[item`+i+`][]" autofocus="autofocus" autocomplete="body" class="form-control" id="article_body"></textarea>
