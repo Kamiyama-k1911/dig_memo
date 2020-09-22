@@ -19,6 +19,7 @@ gem "selenium-webdriver"
 gem "turbolinks", "~> 5"
 gem "webdrivers"
 gem "webpacker", "~> 5.x"
+gem "kaminari"
 
 group :development, :test do
   gem "factory_bot_rails"
