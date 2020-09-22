@@ -20,6 +20,45 @@ RSpec.describe "Resistrations", js: true, type: :feature do
 
       expect(page).to have_content "アカウント登録もしくはログインしてください。"
     end
+
+    context "入力されていない項目がある場合" do
+      before do
+        visit new_user_registration_path
+      end
+
+      it "ユーザー名を入力してくださいとエラーが出る" do
+        fill_in "ユーザー名", with: nil
+        fill_in "メールアドレス", with: "satoshi@example.com"
+        fill_in "パスワード", with: "satoshi1200"
+        fill_in "パスワード確認", with: "satoshi1200"
+
+        click_on "登録する"
+
+        expect(page).to have_content "ユーザー名を入力してください"
+      end
+
+      it "メールアドレスを入力してくださいとエラーが出る" do
+        fill_in "ユーザー名", with: "satoshi"
+        fill_in "メールアドレス", with: nil
+        fill_in "パスワード", with: "satoshi1200"
+        fill_in "パスワード確認", with: "satoshi1200"
+
+        click_on "登録する"
+
+        expect(page).to have_content "メールアドレスを入力してください"
+      end
+
+      it "パスワードを入力してくださいとエラーが出る" do
+        fill_in "ユーザー名", with: "satoshi"
+        fill_in "メールアドレス", with: "satoshi@example.com"
+        fill_in "パスワード", with: nil
+        fill_in "パスワード確認", with: nil
+
+        click_on "登録する"
+
+        expect(page).to have_content "パスワードを入力してください"
+      end
+    end
   end
 
   context "新規登録が済んでいる場合" do

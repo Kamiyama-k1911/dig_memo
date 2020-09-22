@@ -24,10 +24,18 @@ RSpec.describe "Sessions", type: :feature do
   end
 
   describe "ログインしていない時の操作" do
-    it "ログインしていない状態で記事一覧を見ようとする" do
+    before do
       visit articles_path
+    end
 
+    it "ログインしていない状態で記事一覧を見ようとする" do
       expect(page).to have_content "アカウント登録もしくはログインしてください。"
+    end
+
+    it "メールアドレスとパスワードが入力されていなかった場合エラーが出る" do
+      click_button "ログイン"
+
+      expect(page).to have_content "メールアドレスまたはパスワードが違います。"
     end
   end
 end
