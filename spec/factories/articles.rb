@@ -3,6 +3,7 @@
 # Table name: articles
 #
 #  id          :bigint           not null, primary key
+#  favorite    :boolean          default(FALSE), not null
 #  title       :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
@@ -23,19 +24,16 @@ FactoryBot.define do
   factory :article do
     title { Faker::Lorem.word }
     user
-    category
   end
 
   factory :satoshi_article_1, class: "Article" do
     title { "ポケモン" }
     user { 1 }
-    category
   end
 
   factory :satoshi_article_2, class: "Article" do
     title { "デジモン" }
     user { 1 }
-    category
   end
 
   # アクセス制限で使う
@@ -43,7 +41,6 @@ FactoryBot.define do
     id { 1 }
     title { Faker::Lorem.word }
     association :user, factory: :takeshi
-    category
   end
 
   # カテゴリー分けで使う
