@@ -57,6 +57,14 @@ RSpec.describe "Articles", js: true, type: :feature do
         expect(page).to have_content "投稿を削除しました！"
       end
 
+      it "お気に入りが機能する" do
+        find(".favorite-link").click
+
+        visit favorites_index_path
+
+        expect(page).to have_content "こんにちは"
+      end
+
       context "投稿が複数存在する時" do
         before do
           create(:satoshi_article_1, user_id: 1)

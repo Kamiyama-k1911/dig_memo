@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_09_14_074851) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
+    t.boolean "favorite", default: false, null: false
     t.bigint "user_id", null: false
     t.bigint "category_id"
     t.datetime "created_at", precision: 6, null: false

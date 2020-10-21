@@ -8,11 +8,11 @@
         <ul>
           <li>
             <% if article.favorite == false %>
-              <%= link_to(article_favorites_path(article), remote: true, method: :patch, class: "favorite-link") do %>
+              <%= link_to(article_favorites_path(article), remote: true, method: :patch) do %>
                 <i class="far fa-star fa-2x"></i>
               <% end %>
             <% else %>
-              <%= link_to(article_favorites_path(article), remote: true, method: :patch, class: "erase-favorite-link") do %>
+              <%= link_to(article_favorites_path(article), remote: true, method: :patch) do %>
                 <i class="fas fa-star fa-2x"></i>
               <% end %>
             <% end %>
@@ -33,6 +33,3 @@
   <% end %>
   <%= paginate @articles %>
 </main> 
-
-
-  
