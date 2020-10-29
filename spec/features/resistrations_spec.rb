@@ -12,7 +12,12 @@ RSpec.describe "Resistrations", js: true, type: :feature do
 
       click_on "登録する"
 
-      expect(page).to have_content "アカウント登録が完了しました。"
+      user = User.last
+      token = user.confirmation_token
+
+      visit user_confirmation_path(confirmation_token: token)
+
+      expect(page).to have_content "メールアドレスが確認できました。"
     end
 
     it "アカウント情報を編集できない" do
@@ -71,6 +76,11 @@ RSpec.describe "Resistrations", js: true, type: :feature do
       fill_in "パスワード確認", with: "satoshi1200"
 
       click_on "登録する"
+
+      user = User.last
+      token = user.confirmation_token
+
+      visit user_confirmation_path(confirmation_token: token)
     end
 
     it "アカウント情報を更新できる" do

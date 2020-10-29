@@ -49,9 +49,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # end
 
     # The path used after sign up.
-    def after_sign_up_path_for(resource)
-      articles_path
-    end
+    # def after_sign_up_path_for(resource)
+    #   articles_path
+    # end
 
     # 更新時パスワード入力しなくていいように設定
     def update_resource(resource, params)
