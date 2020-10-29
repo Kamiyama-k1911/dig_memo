@@ -9,7 +9,7 @@
 #
 FactoryBot.define do
   factory :category do
-    name { nil }
+    name { Faker::Lorem.word }
   end
 
   factory :learn, class: "Category" do
