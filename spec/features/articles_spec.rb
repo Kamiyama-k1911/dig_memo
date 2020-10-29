@@ -4,6 +4,15 @@ RSpec.describe "Articles", js: true, type: :feature do
   describe "自分の投稿の操作" do
     before do
       create(:satoshi, id: 1)
+      user = User.last
+      token = user.confirmation_token
+
+      visit user_confirmation_path(confirmation_token: token)
+
+      accept_confirm do
+        click_on "ログアウト"
+      end
+
       create(:learn)
       create(:impression)
       create(:answer)
@@ -235,6 +244,16 @@ RSpec.describe "Articles", js: true, type: :feature do
   describe "カテゴリー別に分けられるか" do
     before do
       create(:satoshi, id: 1)
+
+      user = User.last
+      token = user.confirmation_token
+
+      visit user_confirmation_path(confirmation_token: token)
+
+      accept_confirm do
+        click_on "ログアウト"
+      end
+
       create(:learn)
       create(:impression)
       create(:answer)

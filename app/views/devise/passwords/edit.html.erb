@@ -1,0 +1,24 @@
+<div class="container pt-5" style="max-width: 50%">
+
+<h2 class="mb-5">パスワード変更ページ</h2>
+
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <%= f.hidden_field :reset_password_token, class: "reset-token" %>
+
+    <div class="form-group mb">
+      <%= f.label :password, "新しいパスワード(8文字以上)" %>
+      <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control" %>
+    </div>
+
+    <div class="form-group mb">
+      <%= f.label :password_confirmation, "パスワード確認" %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "form-control" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "パスワードを変更する", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+ </div>

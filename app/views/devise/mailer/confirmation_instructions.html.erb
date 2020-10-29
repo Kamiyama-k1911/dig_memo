@@ -1,0 +1,5 @@
+<p>ようこそ <%= @resource.username %>さん!</p>
+
+<p>下記のリンクからDig Memoをご利用ください！</p>
+
+<p><%= link_to 'Dig Memo', confirmation_url(@resource, confirmation_token: @token) %></p>

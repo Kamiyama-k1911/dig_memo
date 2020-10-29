@@ -2,12 +2,18 @@ require "rails_helper"
 
 RSpec.describe "Sessions", type: :feature do
   describe "ログインした時の操作" do
+    let!(:user) { create(:user) }
     before do
-      create(:satoshi)
+      token = user.confirmation_token
+
+      visit user_confirmation_path(confirmation_token: token)
+
+      click_on "ログアウト"
+
       visit new_user_session_path
 
-      fill_in "メールアドレス", with: "satoshi@example.com"
-      fill_in "パスワード", with: "satoshi1290"
+      fill_in "メールアドレス", with: user.email
+      fill_in "パスワード", with: user.password
       click_button "ログイン"
     end
 
