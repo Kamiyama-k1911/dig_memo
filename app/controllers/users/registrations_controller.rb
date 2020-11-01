@@ -63,8 +63,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
       articles_path
     end
 
-  # The path used after sign up for inactive accounts.
-  # def after_inactive_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+    # The path used after sign up for inactive accounts.
+    # def after_inactive_sign_up_path_for(resource)
+    #   super(resource)
+    # end
+
+    def set_categories
+      @categories = Category.all
+    end
 end
