@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get "favorites/index"
-  resources :categories, only: [:index]
+  resources :categories, only: [:index, :new, :create, :edit]
+  resource :category, only: [:destroy]
   root "home#index"
   devise_for :users, controllers: {
     registrations: "users/registrations",

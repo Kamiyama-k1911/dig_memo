@@ -1,6 +1,6 @@
 <header class="column-header">
   <div class="column-header__logo mb-4">
-    <%= link_to(articles_path) do %>
+    <%= link_to(articles_path("適当":"aaa")) do %>
       <img src="/assets/logo.png" alt=""/>
     <% end %>
   </div>
@@ -33,24 +33,23 @@
       </li>
       <li>
         <ul class="list-group" style="max-width: 80%">
-          <li class="list-group-item active">カテゴリー</li>
-          <li class="list-group-item">
-            <%= link_to("一覧",articles_path )%>
-          </li>
-          <li class="list-group-item">
-            <%= link_to("学び",categories_path(:category_id => 1) )%>
-          </li>
-          <li class="list-group-item">
-            <%= link_to("感想",categories_path(:category_id => 2) )%>
-          </li>
-          <li class="list-group-item">
-            <%= link_to("質問への回答",categories_path(:category_id => 3) )%>
-          </li>
-          <li class="list-group-item">
-            <%= link_to("その他",categories_path(:category_id => 4) )%>
-          </li>
+          <div class="category">
+            <li class="list-group-item active">カテゴリー</li>
+            <div class="category__button">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createCategoryModal" data-whatever="@getbootstrap"><i class="far fa-plus-square"></i></button>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#destroyCategoryModal" data-whatever="@getbootstrap"><i class="far fa-minus-square"></i></button>
+            </div>
+          </div>
+          <% @categories.each do |category|%>
+            <li class="list-group-item">
+              <%= link_to(category.name,categories_path(category_id: category.id)) %>
+            </li>
+          <% end %>
         </ul>
       </li>
     </ul>
   </nav>
 </header>
+
+
+ 

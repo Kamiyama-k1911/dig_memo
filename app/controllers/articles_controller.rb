@@ -3,11 +3,14 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = current_user.articles.all.page(params[:page]).per(10)
+    @categories = Category.all
   end
 
   def new
     @article = Article.new
     @article_item = ArticleItem.new
+    @category = Category.new
+    @categories = Category.all
   end
 
   def create

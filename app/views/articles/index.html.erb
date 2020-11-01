@@ -32,7 +32,8 @@
     </ul>
   <% end %>
   <%= paginate @articles %>
+  <%= render partial: "shared/create-category-modal", locals: { category: @category  } %>
+  <%= render partial: "shared/destroy-category-modal", locals: { categories: @categories }   %>
 </main> 
 
 
-  
