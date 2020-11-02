@@ -21,7 +21,7 @@
     <% if user_signed_in? %>
       <div class="container mb" style="max-width: 90%">
         <div class="flex">
-          <%= render partial: "shared/side-header"%>
+          <%= render partial: "shared/side-header", locals: { categories: @categories }%>
           <%= yield %>
         </div>
       </div>
