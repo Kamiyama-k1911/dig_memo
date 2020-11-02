@@ -1,18 +1,18 @@
 require "rails_helper"
 
 # RSpec.fdescribe "Passwords", js: true, type: :feature do
-#   let!(:user) { create(:user) }
-#   let!(:confirmation_token) { user.confirmation_token }
+# let!(:user) { create(:user) }
+# let!(:confirmation_token) { user.confirmation_token }
 
-#   before do
-#     #アカウントを有効化するURL
-#     visit user_confirmation_path(confirmation_token: confirmation_token)
+# before do
+#   #アカウントを有効化するURL
+#   visit user_confirmation_path(confirmation_token: confirmation_token)
 
-#     #ユーザー登録が完了した後、自動的にログインするように設定しているため、一旦ログアウト
-#     accept_confirm do
-#       click_on "ログアウト"
-#     end
+#   #ユーザー登録が完了した後、自動的にログインするように設定しているため、一旦ログアウト
+#   accept_confirm do
+#     click_on "ログアウト"
 #   end
+# end
 
 #   it "パスワード変更ができる" do
 #     #パスワード変更するためのページへ

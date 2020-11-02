@@ -1,6 +1,6 @@
 <header class="column-header">
   <div class="column-header__logo mb-4">
-    <%= link_to(articles_path("適当":"aaa")) do %>
+    <%= link_to(articles_path) do %>
       <img src="/assets/logo.png" alt=""/>
     <% end %>
   </div>
@@ -36,11 +36,11 @@
           <div class="category">
             <li class="list-group-item active">カテゴリー</li>
             <div class="category__button">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createCategoryModal" data-whatever="@getbootstrap"><i class="far fa-plus-square"></i></button>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#destroyCategoryModal" data-whatever="@getbootstrap"><i class="far fa-minus-square"></i></button>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createCategoryModal" data-whatever="@getbootstrap" id="category-create"><i class="far fa-plus-square"></i></button>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#destroyCategoryModal" data-whatever="@getbootstrap" id="category-destroy"><i class="far fa-minus-square"></i></button>
             </div>
           </div>
-          <% @categories.each do |category|%>
+          <% categories.each do |category|%>
             <li class="list-group-item">
               <%= link_to(category.name,categories_path(category_id: category.id)) %>
             </li>

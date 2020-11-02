@@ -11,7 +11,7 @@
         <%= form_with model: categories, url: category_path ,method: :delete, remote: true do |f| %>
           <div class="form-group mb">
             <%= f.label :name, "カテゴリー名" %><br />
-            <%= f.collection_select :id,Category.all,:id, :name ,{ include_blank: "選択して下さい" }, autofocus: true, autocomplete: "name",class: "custom-select" %>
+            <%= f.collection_select :id,current_user.categories,:id, :name ,{ include_blank: "選択して下さい" }, autofocus: true, autocomplete: "name",class: "custom-select",id: "category-select" %>
           </div>
 
           <div class="button text-left">

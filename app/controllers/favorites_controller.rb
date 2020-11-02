@@ -1,5 +1,6 @@
 class FavoritesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_categories
 
   def index
     @articles = current_user.articles.where(favorite: true).page(params[:page]).per(10)

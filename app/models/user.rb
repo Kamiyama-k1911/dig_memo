@@ -28,5 +28,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
 
   has_many :articles, dependent: :destroy
+  has_many :categories, dependent: :destroy
   validates :username, presence: true
 end

@@ -13,10 +13,7 @@ RSpec.describe "Articles", js: true, type: :feature do
         click_on "ログアウト"
       end
 
-      create(:learn)
-      create(:impression)
-      create(:answer)
-      create(:other)
+      sleep 0.5
 
       visit new_user_session_path
 
@@ -28,7 +25,6 @@ RSpec.describe "Articles", js: true, type: :feature do
     it "新規投稿ができる" do
       visit new_article_path
 
-      select "その他", from: "article[category_id]"
       fill_in "タイトル", with: "こんにちは"
 
       click_button "投稿する"
@@ -41,7 +37,6 @@ RSpec.describe "Articles", js: true, type: :feature do
       before do
         visit new_article_path
 
-        select "その他", from: "article[category_id]"
         fill_in "タイトル", with: "こんにちは"
 
         click_button "投稿する"
@@ -93,7 +88,6 @@ RSpec.describe "Articles", js: true, type: :feature do
     it "投稿詳細が取得できる" do
       visit new_article_path
 
-      select "その他", from: "article[category_id]"
       fill_in "タイトル", with: "こんにちは"
 
       click_button "投稿する"
@@ -111,7 +105,6 @@ RSpec.describe "Articles", js: true, type: :feature do
       # 新規投稿画面
       visit new_article_path
 
-      select "その他", from: "article[category_id]"
       fill_in "タイトル", with: "こんにちは"
       click_button "問い+"
 
@@ -142,7 +135,6 @@ RSpec.describe "Articles", js: true, type: :feature do
       # 新規投稿画面
       visit new_article_path
 
-      select "その他", from: "article[category_id]"
       fill_in "タイトル", with: "こんにちは"
       click_button "問い+"
 
@@ -186,7 +178,6 @@ RSpec.describe "Articles", js: true, type: :feature do
       # 新規投稿画面
       visit new_article_path
 
-      select "その他", from: "article[category_id]"
       fill_in "タイトル", with: "こんにちは"
       click_button "問い+"
 
@@ -241,47 +232,47 @@ RSpec.describe "Articles", js: true, type: :feature do
     end
   end
 
-  describe "カテゴリー別に分けられるか" do
-    before do
-      create(:satoshi, id: 1)
+  # describe "カテゴリー別に分けられるか" do
+  #   before do
+  #     create(:satoshi, id: 1)
 
-      user = User.last
-      token = user.confirmation_token
+  #     user = User.last
+  #     token = user.confirmation_token
 
-      visit user_confirmation_path(confirmation_token: token)
+  #     visit user_confirmation_path(confirmation_token: token)
 
-      accept_confirm do
-        click_on "ログアウト"
-      end
+  #     accept_confirm do
+  #       click_on "ログアウト"
+  #     end
 
-      create(:learn)
-      create(:impression)
-      create(:answer)
-      create(:other)
-      create(:learn_article, user_id: 1, category_id: 1)
-      create(:impression_article, user_id: 1, category_id: 2)
-      create(:answer_article, user_id: 1, category_id: 3)
-      create(:other_article, user_id: 1, category_id: 4)
+  #     create(:learn)
+  #     create(:impression)
+  #     create(:answer)
+  #     create(:other)
+  #     create(:learn_article, user_id: 1, category_id: 1)
+  #     create(:impression_article, user_id: 1, category_id: 2)
+  #     create(:answer_article, user_id: 1, category_id: 3)
+  #     create(:other_article, user_id: 1, category_id: 4)
 
-      visit new_user_session_path
+  #     visit new_user_session_path
 
-      fill_in "メールアドレス", with: "satoshi@example.com"
-      fill_in "パスワード", with: "satoshi1290"
-      click_button "ログイン"
-    end
+  #     fill_in "メールアドレス", with: "satoshi@example.com"
+  #     fill_in "パスワード", with: "satoshi1290"
+  #     click_button "ログイン"
+  #   end
 
-    it "カテゴリー分けできる" do
-      click_link "学び"
-      expect(page).to have_content "学び！"
+  #   it "カテゴリー分けできる" do
+  #     click_link "学び"
+  #     expect(page).to have_content "学び！"
 
-      click_link "感想"
-      expect(page).to have_content "感想！"
+  #     click_link "感想"
+  #     expect(page).to have_content "感想！"
 
-      click_link "質問への回答"
-      expect(page).to have_content "質問への回答！"
+  #     click_link "質問への回答"
+  #     expect(page).to have_content "質問への回答！"
 
-      click_link "その他"
-      expect(page).to have_content "その他！"
-    end
-  end
+  #     click_link "その他"
+  #     expect(page).to have_content "その他！"
+  #   end
+  # end
 end
