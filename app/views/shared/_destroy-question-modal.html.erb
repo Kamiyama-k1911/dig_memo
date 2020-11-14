@@ -1,0 +1,25 @@
+<div class="modal fade" id="destroyQuestionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">問い削除</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_with model: article_questions, url: article_questions_path ,method: :delete, remote: true do |f| %>
+          <div class="form-group mb">
+            <%= f.label :question, "問いの名前" %><br />
+            <%= f.collection_select :id,current_user.article_questions,:id, :question ,{ include_blank: "選択して下さい" }, autofocus: true, autocomplete: "name",class: "custom-select",id: "delete-question-list" %>
+          </div>
+
+          <div class="button text-left">
+            <%= f.submit "削除する", data: {confirm: "削除してよろしいですか？"},class: "btn btn-danger" %>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>

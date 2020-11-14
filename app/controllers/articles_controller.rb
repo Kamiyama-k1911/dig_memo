@@ -9,8 +9,7 @@ class ArticlesController < ApplicationController
   def new
     @article = Article.new
     @article_item = ArticleItem.new
-    @category = Category.new
-    @categories = current_user.categories
+    @article_questions = current_user.article_questions
   end
 
   def create
@@ -18,17 +17,20 @@ class ArticlesController < ApplicationController
 
     if @article.save
       params[:items].each do |item|
-        @article_item = @article.article_items.create!(question: item[1][0], body: item[1][1])
+        @article_item = @article.article_items.build(article_question_id: item[1][0], body: item[1][1])
+        @article_item.save
       end
       flash[:notice] = "新規投稿しました！"
       redirect_to articles_path
     else
       render :new
+      flash.now[:notice] = "問いと内容を入力してください！"
     end
   end
 
   def show
     @article = Article.find(params[:id])
+    @article_questions = current_user.article_questions
 
     if @article.user != current_user
       flash[:alert] = "他のユーザーの投稿を見ることはできません！"
@@ -39,6 +41,7 @@ class ArticlesController < ApplicationController
   def edit
     @article = Article.find(params[:id])
     @article_items = @article.article_items
+    @article_questions = current_user.article_questions
 
     if @article.user != current_user
       flash[:alert] = "他のユーザーの投稿は編集できません！"
@@ -51,17 +54,18 @@ class ArticlesController < ApplicationController
     @article_items = @article.article_items
 
     if @article.update(update_article_params)
-
-      i = 0
-      params[:items].each do |item|
-        if @article_items.length < i + 1
-          @article_items.create!(question: item[1][0], body: item[1][1])
-        else
-          @article_items[i].update!(question: item[1][0], body: item[1][1])
+      # if params.include?("items") タイトルだけのメモの編集でタイトルだけを編集した場合に出るエラー対策
+      if params.include?("items")
+        i = 0
+        params[:items].each do |item|
+          if @article_items.length < i + 1
+            @article_items.create!(article_question_id: item[1][0], body: item[1][1])
+          else
+            @article_items[i].update!(article_question_id: item[1][0], body: item[1][1])
+          end
+          i += 1
         end
-        i += 1
       end
-
       flash[:notice] = "投稿を編集しました！"
       redirect_to articles_path
     else

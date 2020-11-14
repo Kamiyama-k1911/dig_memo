@@ -41,7 +41,7 @@
         <%= form_with model: category, url: {controller: 'categories', action: 'create' }, remote: true do |f| %>
           <div class="form-group mb">
             <%= f.label :name, "カテゴリー名" %><br />
-            <%= f.text_field :name, autofocus: true, autocomplete: "name",class: "form-control" %>
+            <%= f.text_field :name, autofocus: true, autocomplete: "name",class: "form-control",id: "create-category-form"%>
           </div>
 
           <div class="button text-left">

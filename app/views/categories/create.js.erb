@@ -1,0 +1,25 @@
+/*フラッシュ*/
+<% if flash.now[:notice] %>
+  $("#flash").html(`<p class="alert alert-success mb-0"><%= flash.now[:notice] %></p>`)
+<% elsif flash.now[:alert] %>
+  $("#flash").html(`<p class="alert alert-danger mb-0"><%= flash[:alert] %></p>`)
+<% end %>
+
+/*問いを作成した際、問い作成フォームに入力されている文字を空にする*/
+$("#create-category-form").val("");
+
+/*モーダルを閉じる*/
+$("#createCategoryModal").modal("toggle");
+
+/*作った問いをセレクトボックスに反映させる*/
+$('#category-choice').append("<option value='<%= @category.id %>'><%= @category.name %></option>");
+
+/*作った問いをセレクトボックスに反映させる(カテゴリー削除)*/
+$("#delete-category-list").append("<option value='<%= @category.id %>'><%= @category.name %></option>");
+
+/*作ったカテゴリーをカテゴリーリストに反映させる*/
+
+
+var categoryid = <% @category.id %>
+
+$("#category-list").append(`<li class="list-group-item" value="${categoryid}"><%= link_to(@category.name,categories_path(category_id: @category.id)) %></li>`)

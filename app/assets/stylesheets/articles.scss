@@ -119,3 +119,15 @@ li {
     flex: 1;
   }
 }
+
+.button-list {
+  li {
+    line-height: 38px;
+    margin-right: 20px;
+  }
+}
+
+#category-list {
+  display: flex;
+  flex-direction: column;
+}

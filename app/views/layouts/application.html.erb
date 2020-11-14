@@ -12,11 +12,13 @@
   </head>
 
   <body>
-    <% if flash[:notice] %>
-      <p class="alert alert-success mb-0"><%= flash[:notice] %></p>
-    <% elsif flash[:alert] %>
-      <p class="alert alert-danger mb-0"><%= flash[:alert] %></p>
-    <% end %>
+    <div id="flash">
+      <% if flash[:notice] %>
+        <p class="alert alert-success mb-0"><%= flash[:notice] %></p>
+      <% elsif flash[:alert] %>
+        <p class="alert alert-danger mb-0"><%= flash[:alert] %></p>
+      <% end %>
+    </div>
 
     <% if user_signed_in? %>
       <div class="container mb" style="max-width: 90%">

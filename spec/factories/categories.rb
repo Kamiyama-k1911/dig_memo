@@ -22,14 +22,12 @@ FactoryBot.define do
     user
   end
 
-  factory :learn, class: "Category" do
-    id { 1 }
-    name { "学び" }
+  factory :sample, class: "Category" do
+    name { "サンプル" }
   end
 
-  factory :impression, class: "Category" do
-    id { 2 }
-    name { "感想" }
+  factory :sample2, class: "Category" do
+    name { "サンプル2" }
   end
 
   factory :answer, class: "Category" do

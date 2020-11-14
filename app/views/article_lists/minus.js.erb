@@ -1,0 +1,10 @@
+var list_number = $(".item-form__list").length;
+
+/*自問自答を減らす処理。リストの数が1つだけだった場合は警告を出す*/
+var result = window.confirm(`最後の問いと内容が削除されます。よろしいですか？`)
+  if( result　&& list_number >= 2 ) {
+    $(".item-form__list:last").empty().remove();
+    list_number -= 1;
+  } else {
+    alert("これ以上削除することはできません！")
+  }
