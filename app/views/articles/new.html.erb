@@ -1,5 +1,9 @@
 <div class="new-form">
-  <h2><i class="fas fa-pen mr-2"></i>新規投稿</h2>
+  <h2><i class="fas fa-pen mr-2"></i>新規投稿<span class="ml-5">※タイトル入力必須</span></h2>
   <%= render partial: "shared/form", locals: { article: @article ,submit: "投稿する" } %>
+  <%= render partial: "shared/create-question-modal", locals: { article_question: @article_question  } %>
+  <%= render partial: "shared/destroy-question-modal", locals: { article_questions: @article_questions }   %> 
+  <%= render partial: "shared/create-category-modal", locals: { category: @category  } %>
+  <%= render partial: "shared/destroy-category-modal", locals: { categories: @categories }   %>
 </div>
 

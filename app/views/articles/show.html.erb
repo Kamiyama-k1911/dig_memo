@@ -18,7 +18,7 @@
     <ul class="article-item-list">
       <% @article.article_items.each do |article_item| %>
         <li class="article-item-list__item">
-          <h5 class="card-title"><%= article_item.question_i18n %></h5>
+          <h5 class="card-title"><%= @article_questions.find(article_item.article_question_id).question %></h5>
           <p class="card-text"><%=  article_item.body %></p>
         </li>
       <% end %>

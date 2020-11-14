@@ -29,5 +29,6 @@ class User < ApplicationRecord
 
   has_many :articles, dependent: :destroy
   has_many :categories, dependent: :destroy
+  has_many :article_questions, dependent: :destroy
   validates :username, presence: true
 end

@@ -32,7 +32,7 @@
         <% end %>
       </li>
       <li>
-        <ul class="list-group" style="max-width: 80%">
+        <ul class="list-group" style="max-width: 80%" >
           <div class="category">
             <li class="list-group-item active">カテゴリー</li>
             <div class="category__button">
@@ -40,16 +40,15 @@
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#destroyCategoryModal" data-whatever="@getbootstrap" id="category-destroy"><i class="far fa-minus-square"></i></button>
             </div>
           </div>
-          <% categories.each do |category|%>
-            <li class="list-group-item">
-              <%= link_to(category.name,categories_path(category_id: category.id)) %>
-            </li>
-          <% end %>
+          <ul id="category-list">
+            <% categories.each do |category|%>
+              <li class="list-group-item" value="<%= category.id %>">
+                <%= link_to(category.name,categories_path(category_id: category.id)) %>
+              </li>
+            <% end %>
+          </ul>
         </ul>
       </li>
     </ul>
   </nav>
 </header>
-
-
- 

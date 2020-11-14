@@ -1,0 +1,18 @@
+/*問いを作成した際、問い作成フォームに入力されている文字を空にする*/
+$("#create-question-form").val("");
+
+/*モーダルを閉じる*/
+$("#createQuestionModal").modal("toggle");
+
+/*作った問いをセレクトボックスに反映させる*/
+$('#delete-question-list').append("<option value='<%= @article_questions.id %>'><%= @article_questions.question %></option>");
+
+/*作った問いをセレクトボックスに反映させる(答える問い)*/
+$(`.question-list`).append("<option value='<%= @article_questions.id %>'><%= @article_questions.question %></option>");
+
+/*フラッシュ*/
+<% if flash.now[:notice] %>
+  $("#flash").html(`<p class="alert alert-success mb-0"><%= flash.now[:notice] %></p>`)
+<% elsif flash.now[:alert] %>
+  $("#flash").html(`<p class="alert alert-danger mb-0"><%= flash[:alert] %></p>`)
+<% end %>

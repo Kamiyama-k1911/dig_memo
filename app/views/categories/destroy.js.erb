@@ -1,0 +1,17 @@
+/*モーダルを閉じる*/
+$("#destroyCategoryModal").modal("toggle");
+
+/*フラッシュ*/
+<% if flash.now[:notice] %>
+  $("#flash").html(`<p class="alert alert-success mb-0"><%= flash.now[:notice] %></p>`)
+<% elsif flash.now[:alert] %>
+  $("#flash").html(`<p class="alert alert-danger mb-0"><%= flash[:alert] %></p>`)
+<% end %>
+
+/*削除した問いをセレクトボックスに反映させる*/
+$('#category-choice').children("option[value=<%= @category.id %>]").remove();
+
+$("#delete-category-list").children("option[value=<%= @category.id %>]").remove();
+
+/*削除した問いをセレクトボックスに反映させる*/
+$(`li[class="list-group-item"]li[value="<%= @category.id %>"]`).remove();

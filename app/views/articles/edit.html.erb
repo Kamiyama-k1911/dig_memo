@@ -1,4 +1,8 @@
 <div class="new-form">
   <h2><i class="fas fa-edit mr-2"></i>投稿編集</h2>
   <%= render partial: "shared/edit-form", locals: { article: @article, submit: "編集する" } %>
+  <%= render partial: "shared/create-question-modal", locals: { article_question: @article_question  } %>
+  <%= render partial: "shared/destroy-question-modal", locals: { article_questions: @article_questions }   %> 
+  <%= render partial: "shared/create-category-modal", locals: { category: @category  } %>
+  <%= render partial: "shared/destroy-category-modal", locals: { categories: @categories } %>
 </div>

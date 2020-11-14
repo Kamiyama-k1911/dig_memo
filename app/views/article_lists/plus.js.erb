@@ -1,0 +1,24 @@
+var list = $(".item-form__list").length;
+var i = list + 1;
+
+var HTML = `<div class="form-group mb">
+  <li class="item-form__list" style="width: 100%">
+    <h2>自問自答`+ i + `</h2>
+    <label class="mt-3" for="article_question">問い`+ i +`</label>
+    <select name="items[item`+i+`][]" class="form-control question-list" id="question-list"><option value="">選択して下さい</option>
+    <% @article_questions.each do |article_question| %>
+      <option value="<%= article_question.id %>"><%= article_question.question %></option>
+    <% end %>
+    </select>
+
+    <label for="article_body">内容`+ i +`</label>
+    <textarea name="items[item`+i+`][]" autofocus="autofocus" autocomplete="body" class="form-control" id="article_body"></textarea>
+  </li>
+</div>`
+$("#item-form").append(HTML);
+i = i + 1;
+
+
+
+
+

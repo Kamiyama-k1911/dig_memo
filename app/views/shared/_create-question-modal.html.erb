@@ -1,0 +1,25 @@
+<div class="modal fade" id="createQuestionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">問い新規作成</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_with model: article_question, url: {controller: 'article_questions', action: 'create' }, remote: true do |f| %>
+          <div class="form-group mb">
+            <%= f.label :question, "問いを作る" %><br />
+            <%= f.text_field :question, autofocus: true, autocomplete: "name",class: "form-control", id: "create-question-form" %>
+          </div>
+
+          <div class="button text-left">
+            <%= f.submit "作成する", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>

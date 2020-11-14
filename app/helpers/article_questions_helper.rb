@@ -1,0 +1,2 @@
+module ArticleQuestionsHelper
+end

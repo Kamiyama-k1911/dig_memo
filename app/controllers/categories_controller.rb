@@ -12,10 +12,10 @@ class CategoriesController < ApplicationController
   def create
     @category = current_user.categories.build(category_param)
     if @category.save
-      flash[:notice] = "カテゴリーを新規作成しました！"
-      redirect_to articles_path
-    else
-      render :new
+      # redirect_to articles_path
+      respond_to do |format|
+        format.js { flash.now[:notice] = "カテゴリー : #{@category.name}を新規作成しました！" }
+      end
     end
   end
 
@@ -26,8 +26,11 @@ class CategoriesController < ApplicationController
     @category = current_user.categories.find(params[:category][:id])
 
     @category.destroy!
-    flash[:alert] = "カテゴリーを削除しました！"
-    redirect_to articles_path
+    respond_to do |format|
+      format.js { flash.now[:alert] = "カテゴリー : #{@category.name}を削除しました！" }
+    end
+    # flash[:alert] = "カテゴリーを削除しました！"
+    # redirect_to articles_path
   end
 
   private
