@@ -107,6 +107,9 @@ li {
   width: 100%;
   &__item {
     margin-bottom: 30px;
+    .card-title {
+      font-weight: 700;
+    }
   }
 }
 

@@ -1,35 +1,46 @@
 <%= render partial: "shared/header" %>
 
-<section class="mv">
-  <div class="mv__text">
-    <h2>思考を深掘りする</h2>
-    <p>このサービスではあなたの思考を深掘りすることを助けます。</p>
+<section class="main-section">
+  <div class="main-section__cover">
+    <h2> Dig Memo</h2>
+    <p>このサービスでは<br>あなたの思考を深掘りすることを助けます。</p>
+  </div>
+  <div class="speech-bubble"></div>
+  <div class="speech-bubble"></div>
+  <div class="speech-bubble"></div>
+</section>
+
+
+  <section class="description">
+    <h1 class="description__title">〜Dig Memoとは？〜</h1>
+    <h4 class="description__subtitle">思考を深掘ることのできるメモ帳です。</h4>
+    <%= video_tag "/assets/videos/demo.mp4", height: "100px", width: "100px",autoplay: true,loop: true, class: "description__movie" %>
+    <p class="description__text">Dig Memoではメモのテーマを設定します。<br>それに対して問いを選び、答えます（自問自答）。<br>自問自答は複数個作ることができます。<br>メモのテーマに対して問いを投げかけることで、あなたの思考を深めます。</p>
   </div>
 </section>
 
-<section class="description">
-  <h1 class="description__title">使える機能</h1>
-  <div class="description__wrapper">
-    <div class="description__item">
-      <i class="fas fa-pen fa-2x"></i>
-      <h3>
-        メモ機能
-      </h3>
-    </div>
+<section class="function">
+<h1 class="function__title">〜機能〜</h1>
+<div class="function__wrapper">
+  <div class="function__item">
+    <h3>
+      <i class="fas fa-star"></i><span>お気に入り機能</span>
+    </h3>
+    <p>好きなメモをお気に入りに！</p>
+  </div>
 
-    <div class="description__item">
-      <i class="fas fa-divide fa-2x"></i>
-      <h3>
-        カテゴリ分け機能
-      </h3>
-    </div>
+  <div class="function__item">
+    <h3>
+      <i class="far fa-folder"></i><span>カテゴリー機能</span>
+    </h3>
+    <p>ジャンル毎に分けられる！</p>
+  </div>
 
-    <div class="description__item">
-      <i class="fab fa-searchengin fa-2x"></i>
-      <h3>
-        メモ検索機能
-      </h3>
-    </div>
+  <div class="function__item">
+    <h3>
+      <i class="fab fa-searchengin"></i><span>メモ検索機能</span>
+    </h3>
+    <p>タイトルでメモを検索してすぐ見つけられる！</p>
   </div>
 </section>
 

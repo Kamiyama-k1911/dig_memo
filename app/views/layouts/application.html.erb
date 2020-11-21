@@ -9,25 +9,33 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300&family=Pangolin&display=swap" rel="stylesheet">
   </head>
 
   <body>
-    <div id="flash">
-      <% if flash[:notice] %>
-        <p class="alert alert-success mb-0"><%= flash[:notice] %></p>
-      <% elsif flash[:alert] %>
-        <p class="alert alert-danger mb-0"><%= flash[:alert] %></p>
-      <% end %>
-    </div>
-
     <% if user_signed_in? %>
-      <div class="container mb" style="max-width: 90%">
-        <div class="flex">
-          <%= render partial: "shared/side-header", locals: { categories: @categories }%>
-          <%= yield %>
-        </div>
+      <div id="flash">
+        <% if flash[:notice] %>
+          <p class="alert alert-success mb-0"><%= flash[:notice] %></p>
+        <% elsif flash[:alert] %>
+          <p class="alert alert-danger mb-0"><%= flash[:alert] %></p>
+        <% end %>
       </div>
+        <div class="container mb">
+          <div class="flex">
+            <%= render partial: "shared/side-header", locals: { categories: @categories }%>
+            <%= yield %>
+          </div>
+        </div>
     <% else %>
+      <div id="flash">
+        <% if flash[:notice] %>
+          <p class="alert alert-success mb-0" id="no-sign-in"><%= flash[:notice] %></p>
+        <% elsif flash[:alert] %>
+          <p class="alert alert-danger mb-0" id="no-sign-in"><%= flash[:alert] %></p>
+        <% end %>
+      </div>
       <%= yield %>
     <% end %>
 

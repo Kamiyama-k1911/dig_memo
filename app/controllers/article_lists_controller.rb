@@ -4,7 +4,10 @@ class ArticleListsController < ApplicationController
   end
 
   def minus
-    @article_item = ArticleItem.find(params[:item_id])
-    @article_item.destroy!
+    # メモ編集画面でメモの内容を削除する
+    if params[:item_id]
+      @article_item = ArticleItem.find(params[:item_id])
+      @article_item.destroy!
+    end
   end
 end
