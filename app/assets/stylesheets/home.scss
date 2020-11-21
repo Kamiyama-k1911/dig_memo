@@ -3,34 +3,45 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 @mixin container {
-  max-width: 80%;
+  max-width: 1140px;
   margin: 0 auto;
+  width: 80%;
 }
 
 @mixin center {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.mv {
-  background-image: url("/assets/hero.jpg");
+.container {
+  @include container;
+}
+
+.main-section {
+  background-image: url("/assets/fancy-cushion");
   height: 700px;
   background-size: cover;
   background-position: center;
   background-color: rgba(255, 255, 255, 0.5);
-  background-blend-mode: lighten;
   position: relative;
-
-  &__text {
+  &__cover {
+    background-color: white;
+    max-width: 700px;
+    width: 80%;
+    padding: 80px 100px;
+    border-radius: 50%;
     @include center;
     & h2,
     p {
-      color: rgba(0, 0, 0, 0.5);
+      color: black;
+      // color: white;
       text-align: center;
+      font-weight: 500;
     }
     & h2 {
+      font-family: "Pangolin", cursive;
       font-weight: 200;
       font-size: 3rem;
       margin-bottom: 20px;
@@ -39,29 +50,86 @@
       font-size: 1.5rem;
     }
   }
+
+  .speech-bubble {
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 63%;
+    left: 65%;
+    height: 55px;
+    width: 100px;
+
+    &:nth-child(2) {
+      height: 50px;
+      width: 80px;
+      top: 73%;
+      left: 77%;
+    }
+    &:nth-child(3) {
+      top: 82%;
+      left: 90%;
+      height: 40px;
+      width: 60px;
+    }
+  }
 }
 
 .description {
-  height: 270px;
+  height: auto;
   @include container;
   text-align: center;
+  margin: 80px auto 0 auto;
 
   &__title {
-    transform: translateX(-15px);
-    margin: 30px 0;
+    margin: 0 0 10px;
+    font-weight: 700;
+  }
+
+  &__subtitle {
+    font-weight: 700;
+  }
+
+  &__text {
+    font-size: 1.2rem;
+  }
+  &__movie {
+    max-width: 800px;
+    width: 90%;
+    height: auto;
+    border: 2px solid black;
+    border-radius: 20px;
+  }
+}
+
+.function {
+  margin: 80px 0;
+  &__title {
+    text-align: center;
   }
 
   &__wrapper {
-    margin-top: 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    max-width: 50%;
+    margin: 0 auto;
+    border: 10px black solid;
+    border-radius: 20px;
+    padding: 40px 0;
   }
 
   &__item {
-    & i {
-      font-size: 50px;
-      margin-bottom: 20px;
+    text-align: center;
+
+    span {
+      margin-left: 10px;
+    }
+
+    h3 {
+      margin: 0;
+    }
+    &:nth-child(3) {
+      p {
+        margin: 0;
+      }
     }
   }
 }
