@@ -20,9 +20,29 @@
 * {
   font-family: "M PLUS 1p", sans-serif;
 }
+
+/*リンク・ボタン・アイコンの色調整*/
+a {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.fa-2x {
+  color: rgb(8, 113, 212);
+}
+.btn-success {
+  background-color: rgb(36, 190, 22);
+}
+.btn-danger {
+  background-color: rgb(236, 24, 77);
+}
+.btn-primary {
+  background-color: rgb(14, 166, 236);
+}
+.btn-warning {
+  background-color: rgb(241, 219, 16);
+}
 body {
   min-height: 100vh;
-  background-color: rgb(148, 111, 32);
 }
 #flash {
   position: relative;
@@ -45,14 +65,25 @@ body {
   }
 }
 
+.flex {
+  display: flex;
+  justify-content: space-between;
+  & ul {
+    display: flex;
+  }
+}
+
 .sign-container {
   max-width: 50%;
   margin: 60px auto 100px auto;
-  padding-top: 50px;
+  padding-top: 80px;
 }
 
 .container {
   padding: 80px 0;
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 95%;
 }
 /*ページネーション自体のデザイン*/
 .pagination > li > a {

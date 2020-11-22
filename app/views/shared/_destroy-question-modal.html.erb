@@ -11,7 +11,7 @@
         <%= form_with model: article_questions, url: article_questions_path ,method: :delete, remote: true do |f| %>
           <div class="form-group mb">
             <%= f.label :question, "問いの名前" %><br />
-            <%= f.collection_select :id,current_user.article_questions,:id, :question ,{ include_blank: "選択して下さい" }, autofocus: true, autocomplete: "name",class: "custom-select",id: "delete-question-list" %>
+            <%= f.collection_select :id,current_user.article_questions,:id, :question ,{ include_blank: "選択して下さい" }, autofocus: true, autocomplete: "name",class: "form-control",id: "delete-question-list" %>
           </div>
 
           <div class="button text-left">

@@ -9,13 +9,13 @@
     <%= f.text_field :title, autofocus: true, autocomplete: "title",class: "form-control" %>
   </div>
 
-  <ul class="button-list">
+  <ul class="question-button-list">
     <li>増やすボタン:</li>
     <li><button type="button" data-toggle="modal" data-target="#createQuestionModal" data-whatever="@getbootstrap" id="question-create" class="btn btn-success">問いを増やす</button></li>
     <li><%= link_to "自問自答を増やす", {controller: "article_lists", action: "plus"},{method: :get,remote: true,type: "button", class: "btn btn-success"} %></li>
   </ul>
 
-  <ul class="button-list mb-5">
+  <ul class="question-button-list mb-5">
     <li>減らすボタン:</li>
     <li><button type="button" data-toggle="modal" data-target="#destroyQuestionModal" data-whatever="@getbootstrap" id="question-destroy" class="btn btn-danger">問いを減らす</button></li>
     <li><%= link_to "自問自答を減らす", {controller: "article_lists", action: "minus", item_id: @article_items.last },{method: :get,remote: true,type: "button", class: "btn btn-danger"} %></li>

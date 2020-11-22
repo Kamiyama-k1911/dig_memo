@@ -1,4 +1,6 @@
 class ArticleQuestionsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @article_questions = current_user.article_questions.build(article_question_param)
 
@@ -11,14 +13,11 @@ class ArticleQuestionsController < ApplicationController
 
   def destroy
     @article_question = current_user.article_questions.find(params[:article_question][:id])
-
-    @article_question.destroy!
-
-    respond_to do |format|
-      format.js { flash.now[:alert] = "問い : #{@article_question.question}を削除しました！" }
+    if @article_question.destroy!
+      respond_to do |format|
+        format.js { flash.now[:alert] = "問い : #{@article_question.question}を削除しました！" }
+      end
     end
-    # flash[:alert] = "問いを削除しました！"
-    # redirect_back(fallback_location: articles_path)
   end
 
   private

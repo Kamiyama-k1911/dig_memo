@@ -13,5 +13,5 @@ $('#category-choice').children("option[value=<%= @category.id %>]").remove();
 
 $("#delete-category-list").children("option[value=<%= @category.id %>]").remove();
 
-/*削除した問いをセレクトボックスに反映させる*/
+/*削除したカテゴリーをリストに反映させる*/
 $(`li[class="list-group-item"]li[value="<%= @category.id %>"]`).remove();

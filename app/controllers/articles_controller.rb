@@ -89,7 +89,8 @@ class ArticlesController < ApplicationController
   end
 
   def search
-    @articles = current_user.articles.search(params[:search_word])
+    @search_word = params[:search_word]
+    @articles = current_user.articles.search(@search_word)
   end
 
   private
