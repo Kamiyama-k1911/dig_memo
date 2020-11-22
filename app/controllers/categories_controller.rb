@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_categories
 
   def index
@@ -11,11 +12,9 @@ class CategoriesController < ApplicationController
 
   def create
     @category = current_user.categories.build(category_param)
-    if @category.save
-      # redirect_to articles_path
-      respond_to do |format|
-        format.js { flash.now[:notice] = "カテゴリー : #{@category.name}を新規作成しました！" }
-      end
+    @category.save!
+    respond_to do |format|
+      format.js { flash.now[:notice] = "カテゴリー : #{@category.name}を新規作成しました！" }
     end
   end
 
@@ -30,7 +29,6 @@ class CategoriesController < ApplicationController
       format.js { flash.now[:alert] = "カテゴリー : #{@category.name}を削除しました！" }
     end
     # flash[:alert] = "カテゴリーを削除しました！"
-    # redirect_to articles_path
   end
 
   private

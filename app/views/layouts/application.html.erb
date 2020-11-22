@@ -24,8 +24,10 @@
       </div>
         <div class="container mb">
           <div class="flex">
-            <%= render partial: "shared/side-header", locals: { categories: @categories }%>
-            <%= yield %>
+            <%= render partial: "shared/side-header", locals: { categories: @categories}%>
+            <div class="main">
+              <%= yield %>
+            </div>
           </div>
         </div>
     <% else %>

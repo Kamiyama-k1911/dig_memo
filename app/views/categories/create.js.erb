@@ -18,8 +18,6 @@ $('#category-choice').append("<option value='<%= @category.id %>'><%= @category.
 $("#delete-category-list").append("<option value='<%= @category.id %>'><%= @category.name %></option>");
 
 /*作ったカテゴリーをカテゴリーリストに反映させる*/
-
-
-var categoryid = <% @category.id %>
+var categoryid = <%= @category.id %>
 
 $("#category-list").append(`<li class="list-group-item" value="${categoryid}"><%= link_to(@category.name,categories_path(category_id: @category.id)) %></li>`)
