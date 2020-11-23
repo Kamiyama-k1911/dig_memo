@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2020_11_03_150641) do
     t.bigint "article_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "article_question_id", null: false
+    t.bigint "article_question_id"
     t.index ["article_id"], name: "index_article_items_on_article_id"
     t.index ["article_question_id"], name: "index_article_items_on_article_question_id"
   end
