@@ -7,7 +7,7 @@
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #  article_id          :bigint
-#  article_question_id :bigint           not null
+#  article_question_id :bigint
 #
 # Indexes
 #

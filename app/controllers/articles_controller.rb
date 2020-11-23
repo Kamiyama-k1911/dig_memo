@@ -18,13 +18,14 @@ class ArticlesController < ApplicationController
     if @article.save
       params[:items].each do |item|
         @article_item = @article.article_items.build(article_question_id: item[1][0], body: item[1][1])
-        @article_item.save
+        @article_item.save!
       end
       flash[:notice] = "新規投稿しました！"
       redirect_to articles_path
     else
-      render :new
-      flash.now[:notice] = "問いと内容を入力してください！"
+      respond_to do |format|
+        format.js { flash.now[:alert] = "タイトルを入力してください！" }
+      end
     end
   end
 

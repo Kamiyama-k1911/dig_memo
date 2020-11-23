@@ -250,50 +250,33 @@ RSpec.describe "Articles", js: true, type: :feature do
           expect(page).to have_current_path articles_path
         end
       end
+
+      context "タイトルを入力せず投稿しようとした時" do
+        it "フラッシュメッセージが表示される" do
+          visit new_article_path
+          click_on "投稿する"
+
+          expect(page).to have_content "タイトルを入力してください！"
+        end
+      end
+
+      context "問いを選ばずに投稿した場合" do
+        it "メモ詳細画面の問いの欄に「問いが選ばれていません」と表示される" do
+          visit new_article_path
+
+          fill_in "タイトル", with: "こんにちは"
+
+          fill_in "items[item1][]", with: "なぜこんにちはと言うのか？"
+          click_on "投稿する"
+
+          expect(page).to have_current_path articles_path, ignore_query: true
+
+          article = Article.find_by(title: "こんにちは")
+          visit article_path(article.id)
+
+          expect(page).to have_content "問いが選ばれていません"
+        end
+      end
     end
   end
-
-  # describe "カテゴリー別に分けられるか" do
-  #   before do
-  #     create(:satoshi, id: 1)
-
-  #     user = User.last
-  #     token = user.confirmation_token
-
-  #     visit user_confirmation_path(confirmation_token: token)
-
-  #     accept_confirm do
-  #       click_on "ログアウト"
-  #     end
-
-  #     create(:learn)
-  #     create(:impression)
-  #     create(:answer)
-  #     create(:other)
-  #     create(:learn_article, user_id: 1, category_id: 1)
-  #     create(:impression_article, user_id: 1, category_id: 2)
-  #     create(:answer_article, user_id: 1, category_id: 3)
-  #     create(:other_article, user_id: 1, category_id: 4)
-
-  #     visit new_user_session_path
-
-  #     fill_in "メールアドレス", with: "satoshi@example.com"
-  #     fill_in "パスワード", with: "satoshi1290"
-  #     click_button "ログイン"
-  #   end
-
-  #   it "カテゴリー分けできる" do
-  #     click_link "学び"
-  #     expect(page).to have_content "学び！"
-
-  #     click_link "感想"
-  #     expect(page).to have_content "感想！"
-
-  #     click_link "質問への回答"
-  #     expect(page).to have_content "質問への回答！"
-
-  #     click_link "その他"
-  #     expect(page).to have_content "その他！"
-  #   end
-  # end
 end

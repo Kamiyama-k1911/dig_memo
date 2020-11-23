@@ -1,0 +1,6 @@
+/*フラッシュ*/
+<% if flash.now[:notice] %>
+  $("#flash").html(`<p class="alert alert-success mb-0"><%= flash.now[:notice] %></p>`)
+<% elsif flash.now[:alert] %>
+  $("#flash").html(`<p class="alert alert-danger mb-0"><%= flash[:alert] %></p>`)
+<% end %>
