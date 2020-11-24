@@ -31,4 +31,11 @@ class User < ApplicationRecord
   has_many :categories, dependent: :destroy
   has_many :article_questions, dependent: :destroy
   validates :username, presence: true
+
+  def self.guest
+    User.find_or_create_by!(username: "guest", email: "guest@example.com") do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.confirmed_at = Time.zone.now
+    end
+  end
 end

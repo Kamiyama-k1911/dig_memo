@@ -1,28 +1,9 @@
-
 <header class="header">
-  <div class="header__logo">
-    <% if user_signed_in? %>
-      <%= link_to(articles_path) do %>
-        <img src="/assets/logo.png" alt=""/>
-      <% end %>
-    <% else %>
-      <%= link_to(root_path) do %>
-        <img src="/assets/logo.png" alt=""/>
-      <% end %>
-    <% end %>
-  </div>
-  <% if user_signed_in? %>
-    <nav>
-      <ul class="header__list">
-        <li class="header__list__item"><%= link_to("ログアウト",destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしますか？"} ) %></li>
-      </ul>
-    </nav>
-  <% else %>
-    <nav>
-      <ul class="header__list">
-        <li class="header__list__item"><%= link_to("新規登録",new_user_registration_path ) %></li>
-        <li class="header__list__item"><%= link_to("ログイン",new_user_session_path ) %></li>
-      </ul>
-    </nav>
-  <% end %>
+  <nav>
+    <ul class="header__list">
+      <li class="header__list__item"><%= link_to("新規登録",new_user_registration_path ) %></li>
+      <li class="header__list__item"><%= link_to("ログイン",new_user_session_path ) %></li>
+      <li class="header__list__item"><%= link_to("ゲストログイン（閲覧用）",users_guest_sign_in_path, method: :post ) %></li>
+    </ul>
+  </nav>
 </header>

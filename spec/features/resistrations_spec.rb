@@ -109,4 +109,29 @@ RSpec.describe "Resistrations", js: true, type: :feature do
       expect(page).to have_content "アカウントを削除しました。またのご利用をお待ちしております。"
     end
   end
+
+  describe "ゲストユーザー" do
+    context "ログインしているユーザーがゲストユーザーだった時" do
+      before do
+        visit root_path
+        click_on "ゲストログイン（閲覧用）"
+      end
+
+      it "ユーザー情報を変更できない" do
+        visit edit_user_registration_path
+
+        click_on "編集する"
+        expect(page).to have_content "ゲストユーザーの編集・削除はできません！"
+      end
+
+      it "ユーザーを削除できない" do
+        visit edit_user_registration_path
+
+        accept_confirm do
+          click_on "アカウントを削除する"
+        end
+        expect(page).to have_content "ゲストユーザーの編集・削除はできません！"
+      end
+    end
+  end
 end
