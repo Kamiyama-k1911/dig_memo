@@ -1,15 +1,17 @@
 # frozen_string_literal: true
 
 class Users::PasswordsController < Devise::PasswordsController
+  before_action :check_guest, only: :create
+
   # GET /resource/password/new
   # def new
   #   super
   # end
 
   # POST /resource/password
-  # def create
-  #   super
-  # end
+  def create
+    super
+  end
 
   # GET /resource/password/edit?reset_password_token=abcdef
   # def edit
