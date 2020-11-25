@@ -1,37 +1,5 @@
 <main class="main">
-  <h2 class="mb-4">カテゴリー：<%= @categories.find_by(id: params[:category_id]).name %></h2>
-  <% @articles.each do |article| %>
-    <ul class="list-group">
-      <li class="list-group-item">
-        <ul>
-          <li><%= link_to(article.title, article_path(article))%></li>
-        </ul>
-        <ul>
-          <li>
-            <% if article.favorite == false %>
-              <%= link_to(article_favorites_path(article), remote: true, method: :patch, class: "favorite-link") do %>
-                <i class="far fa-star fa-2x"></i>
-              <% end %>
-            <% else %>
-              <%= link_to(article_favorites_path(article), remote: true, method: :patch, class: "erase-favorite-link") do %>
-                <i class="fas fa-star fa-2x"></i>
-              <% end %>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to(edit_article_path(article)) do %>
-              <i class="fas fa-edit fa-2x"></i>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to(article_path(article),method: :delete, class: "destroy", data: {confirm: "投稿を削除しますか？"}, class: "destroy") do %>
-              <i class="fas fa-trash fa-2x"></i>
-            <% end %>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  <% end %>
+  <%= render partial: "shared/article_index", locals: { articles: @articles, subject: "カテゴリー:　" + @categories.find_by(id: params[:category_id]).name }%>
   <%= paginate @articles %>
   <%= render partial: "shared/create-category-modal", locals: { category: @category  } %>
   <%= render partial: "shared/destroy-category-modal", locals: { categories: @categories }   %>

@@ -1,33 +1,3 @@
-<%
-=begin%>
- <%= link_to 'New  Category', new_category_path, remote: true, class: "btn btn-lg, btn-primary" %>
-
-<div class="modal-dialog" role="document">
-  <div class="modal-content">
-    <%= form_with(model: category, remote: true) do |f| %>
-      <% if category.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(category.errors.count, "error") %> prohibited this user from being saved:</h2>
-          <ul>
-          <% category.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-          </ul>
-        </div>
-      <% end %>
-
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-
-      <div class="actions">
-        <%= f.submit %>
-      </div>
-    <% end %>
-  </div>
-</div>
-<%
-=end%>
-
 <div class="modal fade" id="createCategoryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -53,23 +23,3 @@
     </div>
   </div>
 </div>
-
- <%
-=begin%>
- <form>
-<div class="form-group">
-<label for="recipient-name" class="col-form-label">Recipient:</label>
-<input type="text" class="form-control" id="recipient-name">
-</div>
-<div class="form-group">
-<label for="message-text" class="col-form-label">Message:</label>
-<textarea class="form-control" id="message-text"></textarea>
-</div>
-</form>
-
-<div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
-      </div>
-<%
-=end%>

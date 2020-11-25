@@ -11,8 +11,6 @@ require("turbolinks").start();
 require("@rails/activestorage").start();
 require("channels");
 require("jquery");
-require("./question.js");
-require("./create-category-modal.js");
 
 window.$ = $;
 
