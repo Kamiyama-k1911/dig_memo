@@ -2,7 +2,7 @@
   <% if @search_word == "" %>
     <h2 class="mb-4">検索ワードに一致するメモは見つかりませんでした</h2>
   <% else %>
-  <h2 class="mb-4">”<%= @search_word%>” を含むメモ　<%= @articles.length %>件</h2>
+    <h2 class="mb-4">”<%= @search_word%>” を含むメモ　<%= @articles.length %>件</h2>
     <% @articles.each do |article| %>
       <ul class="list-group">
         <li class="list-group-item">
@@ -36,4 +36,5 @@
       </ul>
     <% end %>
   <% end %>
+  <%= paginate @articles %>
 </main>

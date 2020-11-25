@@ -238,15 +238,14 @@ RSpec.describe "Articles", js: true, type: :feature do
 
         it "他のユーザーの投稿を編集できない" do
           visit edit_article_path(takeshi_article)
-
-          expect(page).to have_content "他のユーザーの投稿は編集できません！"
+          expect(page).to have_content "他のユーザーの投稿の閲覧・編集はできません！"
           expect(page).to have_current_path articles_path
         end
 
         it "他のユーザーの投稿詳細を見ることができない" do
           visit article_path(1)
 
-          expect(page).to have_content "他のユーザーの投稿を見ることはできません！"
+          expect(page).to have_content "他のユーザーの投稿の閲覧・編集はできません！"
           expect(page).to have_current_path articles_path
         end
       end
