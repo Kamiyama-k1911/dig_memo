@@ -24,7 +24,7 @@ require "rails_helper"
 
 RSpec.describe Article, type: :model do
   context "タイトルが入力されていた時" do
-    it "記事投稿に成功する" do
+    it "メモ投稿に成功する" do
       article = build(:article)
 
       expect(article).to be_valid
@@ -32,7 +32,7 @@ RSpec.describe Article, type: :model do
   end
 
   context "タイトルが空だった時" do
-    it "記事投稿に失敗する" do
+    it "メモ投稿に失敗する" do
       article = build(:article, title: nil)
 
       expect(article).to be_invalid
