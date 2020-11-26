@@ -28,12 +28,12 @@ FactoryBot.define do
 
   factory :satoshi_article_1, class: "Article" do
     title { "ポケモン" }
-    user { 1 }
+    user_id { 1 }
   end
 
   factory :satoshi_article_2, class: "Article" do
     title { "デジモン" }
-    user { 1 }
+    user_id { 1 }
   end
 
   # アクセス制限で使う

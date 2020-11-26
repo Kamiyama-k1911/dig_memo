@@ -44,7 +44,7 @@
             <% end %>
           </div>
           <ul id="category-list">
-            <% categories.each do |category|%>
+            <% categories&.each do |category|%>
               <li class="list-group-item" value="<%= category.id %>">
                 <%= link_to(category.name,categories_path(category_id: category.id)) %>
               </li>

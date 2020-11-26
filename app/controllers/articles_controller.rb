@@ -37,14 +37,15 @@ class ArticlesController < ApplicationController
 
   def update
     @article_items = @article.article_items
-
     if @article.update(update_article_params)
       article_item_edit
 
       flash[:notice] = "投稿を編集しました！"
       redirect_to articles_path
     else
-      render :edit
+      respond_to do |format|
+        format.js { flash.now[:alert] = "タイトルを入力してください！" }
+      end
     end
   end
 
@@ -75,6 +76,8 @@ class ArticlesController < ApplicationController
     end
 
     def article_item_edit
+      return unless params.include?("items")
+
       i = 0
       params[:items].each do |item|
         if @article_items.length < i + 1
