@@ -11,7 +11,7 @@ RSpec.describe "Resistrations", js: true, type: :feature do
         fill_in "パスワード", with: "satoshi1200"
         fill_in "パスワード確認", with: "satoshi1200"
 
-        click_on "登録する"
+        expect { click_on "登録する" }.to change { ActionMailer::Base.deliveries.size }.by(1)
 
         user = User.last
         token = user.confirmation_token
@@ -112,6 +112,37 @@ RSpec.describe "Resistrations", js: true, type: :feature do
         click_on "登録する"
 
         expect(page).to have_content "パスワードを入力してください"
+      end
+    end
+
+    context "新規登録済みの場合" do
+      before do
+        visit new_user_registration_path
+
+        fill_in "ユーザー名", with: "satoshi"
+        fill_in "メールアドレス", with: "satoshi@example.com"
+        fill_in "パスワード", with: "satoshi1200"
+        fill_in "パスワード確認", with: "satoshi1200"
+
+        click_on "登録する"
+
+        user = User.last
+        token = user.confirmation_token
+
+        visit user_confirmation_path(confirmation_token: token)
+      end
+
+      context "ユーザー編集画面で未入力の欄があった時" do
+        it "入力してくださいとフラッシュメッセージが表示される" do
+          visit edit_user_registration_path
+
+          fill_in "ユーザー名", with: nil
+          fill_in "メールアドレス", with: nil
+          click_on "編集する"
+
+          expect(page).to have_content "ユーザー名を入力してください"
+          expect(page).to have_content "メールアドレスを入力してください"
+        end
       end
     end
   end

@@ -15,13 +15,7 @@
 
   <body>
     <% if user_signed_in? %>
-      <div id="flash">
-        <% if flash[:notice] %>
-          <p class="alert alert-success mb-0"><%= flash[:notice] %></p>
-        <% elsif flash[:alert] %>
-          <p class="alert alert-danger mb-0"><%= flash[:alert] %></p>
-        <% end %>
-      </div>
+      <%= render partial: "shared/flash" %>
         <div class="container mb">
           <div class="flex">
             <%= render partial: "shared/side-header", locals: { categories: @categories}%>
@@ -31,12 +25,7 @@
           </div>
         </div>
     <% else %>
-      <div id="flash">
-        <% if flash[:notice] %>
-          <p class="alert alert-success mb-0" id="no-sign-in"><%= flash[:notice] %></p>
-        <% elsif flash[:alert] %>
-          <p class="alert alert-danger mb-0" id="no-sign-in"><%= flash[:alert] %></p>
-        <% end %>
+      <%= render partial: "shared/flash" %>
       </div>
       <%= yield %>
     <% end %>
