@@ -12,13 +12,8 @@ var HTML = `<div class="form-group mb">
     </select>
 
     <label for="article_body">内容`+ i +`</label>
-    <textarea name="items[item`+i+`][]" autofocus="autofocus" autocomplete="body" class="form-control" id="article_body"></textarea>
+    <textarea name="items[item`+i+`][]" autofocus="autofocus" autocomplete="body" class="form-control" id="article_body" cols="10" rows="5" ></textarea>
   </li>
 </div>`
 $("#item-form").append(HTML);
 i = i + 1;
-
-
-
-
-
