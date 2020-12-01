@@ -29,7 +29,7 @@
         <%= f.collection_select :question, current_user.article_questions,:id,:question, { include_blank: "選択して下さい" },{ name: "items[item1][]", class: "form-control question-list", id: "question-list" } %>
 
         <%= f.label :body, "内容1" %>
-        <%= f.text_area :body,name: "items[item1][]", autofocus: true, autocomplete: "body",class: "form-control" %>
+        <%= f.text_area :body,name: "items[item1][]", autofocus: true, autocomplete: "body",class: "form-control", size: "10x5" %>
       </li>
     </div>
   </div>

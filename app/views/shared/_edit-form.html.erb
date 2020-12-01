@@ -31,7 +31,7 @@
             <%= item.collection_select :question, current_user.article_questions,:id,:question, { selected: article_item.article_question_id, include_blank: "選択して下さい" },{ name: "items[item#{num+1}][]", class: "form-control question-list", id: "question-list" } %>
 
             <%= item.label :body, "内容#{num+1}" %>
-            <%= item.text_area :body, name: "items[item#{num+1}][]", autofocus: true, autocomplete: "body",class: "form-control" %>
+            <%= item.text_area :body, name: "items[item#{num+1}][]", autofocus: true, autocomplete: "body",class: "form-control", size: "10x5" %>
           </li>
         </div>
       <% end %>
