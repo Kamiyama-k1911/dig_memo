@@ -54,15 +54,16 @@ body {
     left: 0;
     width: 100%;
   }
-  /*ログインしていない時のフラッシュ*/
-  #no-sign-in {
-    text-align: center;
-    z-index: 20;
-    position: fixed;
-    top: 60px;
-    left: 0;
-    width: 100%;
-  }
+}
+
+/*ログインしていない時のフラッシュ*/
+#no-sign-in {
+  text-align: center;
+  z-index: 20;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 100%;
 }
 
 .flex {

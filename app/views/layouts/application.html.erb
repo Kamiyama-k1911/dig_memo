@@ -14,7 +14,7 @@
 
   <body>
     <% if user_signed_in? %>
-      <%= render partial: "shared/flash" %>
+      <%= render partial: "shared/flash", locals: { id: "flash" } %>
         <div class="container mb">
           <div class="flex">
             <%= render partial: "shared/side-header", locals: { categories: @categories}%>
@@ -24,7 +24,7 @@
           </div>
         </div>
     <% else %>
-      <%= render partial: "shared/flash" %>
+      <%= render partial: "shared/flash", locals: { id: "no-sign-in" } %>
       </div>
       <%= yield %>
     <% end %>
