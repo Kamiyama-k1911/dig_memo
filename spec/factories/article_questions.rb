@@ -3,7 +3,7 @@
 # Table name: article_questions
 #
 #  id         :bigint           not null, primary key
-#  question   :string
+#  question   :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  user_id    :bigint           not null

@@ -4,7 +4,7 @@
 #
 #  id          :bigint           not null, primary key
 #  favorite    :boolean          default(FALSE), not null
-#  title       :string
+#  title       :string(255)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  category_id :bigint
