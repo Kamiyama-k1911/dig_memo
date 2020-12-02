@@ -12,10 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2020_11_03_150641) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "article_items", force: :cascade do |t|
+  create_table "article_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "body"
     t.bigint "article_id"
     t.datetime "created_at", precision: 6, null: false
@@ -25,7 +22,7 @@ ActiveRecord::Schema.define(version: 2020_11_03_150641) do
     t.index ["article_question_id"], name: "index_article_items_on_article_question_id"
   end
 
-  create_table "article_questions", force: :cascade do |t|
+  create_table "article_questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "question"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -33,7 +30,7 @@ ActiveRecord::Schema.define(version: 2020_11_03_150641) do
     t.index ["user_id"], name: "index_article_questions_on_user_id"
   end
 
-  create_table "articles", force: :cascade do |t|
+  create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.boolean "favorite", default: false, null: false
     t.bigint "user_id", null: false
@@ -44,7 +41,7 @@ ActiveRecord::Schema.define(version: 2020_11_03_150641) do
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
-  create_table "categories", force: :cascade do |t|
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -52,7 +49,7 @@ ActiveRecord::Schema.define(version: 2020_11_03_150641) do
     t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
