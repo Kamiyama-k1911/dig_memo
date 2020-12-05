@@ -75,6 +75,8 @@ RSpec.describe "Articles", js: true, type: :feature do
 
         find(".erase-favorite-link").click
 
+        expect(page).to have_selector ".favorite-link"
+
         visit favorites_index_path
 
         expect(page).not_to have_content satoshi_article.title
