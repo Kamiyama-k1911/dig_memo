@@ -1,6 +1,6 @@
 version: "3.2"
 
-services:P
+services:
   database:
     restart: always
     image: mysql:latest
