@@ -1,5 +1,4 @@
 class ArticlesController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_categories
   before_action :set_article, only: [:update, :destroy, :article_item_destroy]
   before_action :set_article_questions, only: [:show, :edit]

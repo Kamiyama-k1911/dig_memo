@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   get "article_list_plus", to: "article_lists#plus"
   get "article_list_minus", to: "article_lists#minus"
 
-  resource :article_questions, only: [:destroy]
   resource :category, only: [:destroy]
   resources :categories, only: [:index, :new, :create, :edit]
   resources :article_questions, only: [:create]
+  resource :article_questions, only: [:destroy]
   resources :articles do
     resource :favorites, only: [:index, :update]
   end

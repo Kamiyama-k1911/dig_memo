@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Passwords", type: :feature do
+RSpec.describe "Passwords", js: true, type: :feature do
   describe "正常系" do
     let!(:user) { create(:user) }
     # let!(:confirmation_token) { user.confirmation_token }

@@ -1,6 +1,4 @@
 class ArticleQuestionsController < ApplicationController
-  before_action :authenticate_user!
-
   def create
     @article_questions = current_user.article_questions.build(article_question_param)
 
