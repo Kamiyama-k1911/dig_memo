@@ -1,5 +1,4 @@
 class CategoriesController < ApplicationController
-  before_action :set_categories
 
   def index
     @articles = current_user.articles.where(category_id: params[:category_id]).page(params[:page]).per(10)
