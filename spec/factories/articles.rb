@@ -43,28 +43,4 @@ FactoryBot.define do
     association :user, factory: :takeshi
   end
 
-  # カテゴリー分けで使う
-  factory :learn_article, class: "Article" do
-    title { "学び！" }
-    association :user, factory: :satoshi
-    category
-  end
-
-  factory :impression_article, class: "Article" do
-    title { "感想！" }
-    association :user, factory: :satoshi
-    category
-  end
-
-  factory :answer_article, class: "Article" do
-    title { "質問への回答！" }
-    association :user, factory: :satoshi
-    category
-  end
-
-  factory :other_article, class: "Article" do
-    title { "その他！" }
-    association :user, factory: :satoshi
-    category
-  end
 end
