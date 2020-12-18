@@ -42,5 +42,4 @@ FactoryBot.define do
     title { Faker::Lorem.word }
     association :user, factory: :takeshi
   end
-
 end
