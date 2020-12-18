@@ -30,13 +30,4 @@ FactoryBot.define do
     name { "サンプル2" }
   end
 
-  factory :answer, class: "Category" do
-    id { 3 }
-    name { "質問への回答" }
-  end
-
-  factory :other, class: "Category" do
-    id { 4 }
-    name { "その他" }
-  end
 end
