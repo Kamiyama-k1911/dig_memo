@@ -10,7 +10,7 @@ class ArticleQuestionsController < ApplicationController
   end
 
   def destroy
-    @article_question = current_user.article_questions.find(params[:article_question][:id])
+    @article_question = current_user.article_questions.find(params[:id])
     if @article_question.destroy!
       respond_to do |format|
         format.js { flash.now[:alert] = "問い : #{@article_question.question}を削除しました！" }

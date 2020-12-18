@@ -29,5 +29,4 @@ FactoryBot.define do
   factory :sample2, class: "Category" do
     name { "サンプル2" }
   end
-
 end
