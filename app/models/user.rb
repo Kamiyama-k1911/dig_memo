@@ -30,7 +30,13 @@ class User < ApplicationRecord
   has_many :articles, dependent: :destroy
   has_many :categories, dependent: :destroy
   has_many :article_questions, dependent: :destroy
+
+  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[ -~]{8,32}\z/
+  EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
   validates :username, presence: true
+  validates :email, presence: true, format: { with: EMAIL_REGEX }
+  validates :password, presence: true, format: {with: PASSWORD_REGEX, message: "は半角英数字・小文字を含む8〜32文字で入力してください" }
 
   def self.guest
     User.find_or_create_by!(username: "guest", email: "guest@example.com") do |user|
