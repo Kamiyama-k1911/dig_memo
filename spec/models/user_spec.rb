@@ -49,12 +49,11 @@ RSpec.describe User, type: :model do
   end
 
   describe "異常系" do
-    fcontext "ユーザーの名前が空の時" do
+    context "ユーザーの名前が空の時" do
       it "ユーザーデータ登録に失敗する" do
         user.username = nil
 
         expect(user).to be_invalid
-        binding.pry
         expect(user.errors.details[:username][0][:error]).to eq :blank
       end
     end
@@ -128,7 +127,7 @@ RSpec.describe User, type: :model do
 
     context "パスワードが数字だけだった時" do
       it "ユーザーデータ登録に失敗する" do
-        user.password = 11111111
+        user.password = 11_111_111
         expect(user).to be_invalid
       end
     end
