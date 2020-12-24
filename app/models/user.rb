@@ -36,7 +36,7 @@ class User < ApplicationRecord
 
   validates :username, presence: true
   validates :email, presence: true, format: { with: EMAIL_REGEX }
-  validates :password, presence: true, format: {with: PASSWORD_REGEX, message: "は半角英数字・小文字を含む8〜32文字で入力してください" }
+  validates :password, presence: true, format: {with: PASSWORD_REGEX, message: "は半角英数字・小文字を含む8〜32文字で入力してください" }, on: :create
 
   def self.guest
     User.find_or_create_by!(username: "guest", email: "guest@example.com") do |user|
