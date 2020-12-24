@@ -24,45 +24,113 @@
 require "rails_helper"
 
 RSpec.describe User, type: :model do
-  context "ユーザーデータが全て入力されていた時" do
-    it "ユーザーデータ登録に成功する" do
-      user = build(:user)
+  let!(:user) { build(:user) }
 
-      expect(user).to be_valid
+  describe "正常系" do
+    context "ユーザーデータが全て入力されていた時" do
+      it "ユーザーデータ登録に成功する" do
+        expect(user).to be_valid
+      end
+    end
+
+    context "パスワードに小文字と数字が含まれ、文字数が8~32文字だった時" do
+      it "ユーザーデータ登録に成功する" do
+        user.password = "1234abcd"
+        expect(user).to be_valid
+      end
+    end
+
+    context "正しいメールアドレスが入力された時" do
+      it "ユーザーデータ登録に成功する" do
+        user.password = "1234abcd@example.com"
+        expect(user).to be_valid
+      end
     end
   end
 
-  context "ユーザーの名前が空の時" do
-    it "ユーザーデータ登録に失敗する" do
-      user = build(:user, username: nil)
+  describe "異常系" do
+    fcontext "ユーザーの名前が空の時" do
+      it "ユーザーデータ登録に失敗する" do
+        user.username = nil
 
-      expect(user).to be_invalid
-      expect(user.errors.details[:username][0][:error]).to eq :blank
+        expect(user).to be_invalid
+        binding.pry
+        expect(user.errors.details[:username][0][:error]).to eq :blank
+      end
     end
-  end
 
-  context "メールアドレスが空の時" do
-    it "ユーザーデータ登録に失敗する" do
-      user = build(:user, email: nil)
-      expect(user).to be_invalid
+    context "メールアドレスが空の時" do
+      it "ユーザーデータ登録に失敗する" do
+        user.email = nil
+        expect(user).to be_invalid
+      end
     end
-  end
 
-  context "既に同じメールアドレスが存在していた時" do
-    before { create(:user, email: "tarotaro@example.com") }
-
-    it "ユーザーデータ登録に失敗する" do
-      user = build(:user, email: "tarotaro@example.com")
-
-      expect(user).to be_invalid
-      expect(user.errors.details[:email][0][:error]).to eq :taken
+    context "メールアドレスに@が含まれなかった時" do
+      it "ユーザーデータ登録に失敗する" do
+        user.email = "1234example.com"
+        expect(user).to be_invalid
+      end
     end
-  end
 
-  context "パスワードが空の時" do
-    it "ユーザーデータ登録に失敗する" do
-      user = build(:user, password: nil)
-      expect(user).to be_invalid
+    context "メールアドレスに.が含まれなかった時" do
+      it "ユーザーデータ登録に失敗する" do
+        user.email = "1234@examplecom"
+        expect(user).to be_invalid
+      end
+    end
+
+    context "メールアドレスが@から始まった時" do
+      it "ユーザーデータ登録に失敗する" do
+        user.email = "@1234@example.com"
+        expect(user).to be_invalid
+      end
+    end
+
+    context "既に同じメールアドレスが存在していた時" do
+      before { create(:user, email: "tarotaro@example.com") }
+
+      it "ユーザーデータ登録に失敗する" do
+        user.email = "tarotaro@example.com"
+
+        expect(user).to be_invalid
+        expect(user.errors.details[:email][0][:error]).to eq :taken
+      end
+    end
+
+    context "パスワードが空の時" do
+      it "ユーザーデータ登録に失敗する" do
+        user.password = nil
+        expect(user).to be_invalid
+      end
+    end
+
+    context "パスワードが7文字だった時" do
+      it "ユーザーデータ登録に失敗する" do
+        user.password = "abcd123"
+        expect(user).to be_invalid
+      end
+    end
+
+    context "パスワードが33文字だった時" do
+      it "ユーザーデータ登録に失敗する" do
+        user.password = "a1" * 16 + "a"
+        expect(user).to be_invalid
+      end
+    end
+
+    context "パスワードが文字だけだった時" do
+      it "ユーザーデータ登録に失敗する" do
+        user.password = "a" * 8
+        expect(user).to be_invalid
+      end
+    end
+
+    context "パスワードが数字だけだった時" do
+      it "ユーザーデータ登録に失敗する" do
+        user.password = 11111111
+        expect(user).to be_invalid
+      end
     end
   end
 end
