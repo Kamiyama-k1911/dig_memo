@@ -33,6 +33,14 @@ RSpec.describe "Articles", js: true, type: :feature do
       expect(page).to have_current_path articles_path, ignore_query: true
     end
 
+    context "投稿が存在しない時" do
+      it "メモが見つからないと表示される" do
+        click_button "検索"
+
+        expect(page).to have_content "検索ワードに一致するメモは見つかりませんでした"
+      end
+    end
+
     context "投稿が存在する場合" do
       let!(:satoshi_article) { create(:satoshi_article_1) }
 
@@ -242,6 +250,31 @@ RSpec.describe "Articles", js: true, type: :feature do
         # 投稿詳細画面
         expect(page).not_to have_content "ドイツ語でこんにちははなんと言うのか？"
         expect(page).not_to have_content "どこで？"
+      end
+
+      context "メモの内容に含まれるもじが検索された時" do
+        before do
+          visit new_article_path
+
+          fill_in "タイトル", with: "こんにちは"
+
+          select "なぜ？", from: "items[item1][]"
+          fill_in "items[item1][]", with: "なぜこんにちはと言うのか？"
+
+          click_on "自問自答を増やす"
+
+          select "どこで？", from: "items[item2][]"
+          fill_in "items[item2][]", with: "ドイツ語でこんにちははなんと言うのか？"
+
+          click_button "投稿する"
+        end
+
+        it "検索内容が含まれるタイトルのメモが表示される" do
+          fill_in "検索フォーム", with: "ドイツ語"
+          click_button "検索"
+
+          expect(page).not_to have_content "どこで？"
+        end
       end
     end
   end
