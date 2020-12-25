@@ -22,4 +22,11 @@
 class ArticleItem < ApplicationRecord
   belongs_to :article_question, optional: true
   belongs_to :article
+
+  def self.item_search(search)
+    if search
+      ArticleItem.where(["body LIKE ?", "%#{search}%"])
+      # && Article.where(["title LIKE ?", "%#{search}%"])
+    end
+  end
 end

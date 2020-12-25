@@ -61,7 +61,16 @@ class ArticlesController < ApplicationController
 
   def search
     @search_word = params[:search_word]
-    @articles = current_user.articles.search(@search_word).all.page(params[:page]).per(10)
+
+    article_items = ArticleItem.item_search(@search_word)
+    articles = current_user.articles.search(@search_word)
+
+    change_to_articles = current_user.articles.where(id: article_items.map{ |item| item.article_id } )
+
+
+    total_articles = articles.or(change_to_articles)
+    binding.pry
+    @articles = total_articles.all.page(params[:page]).per(10)
   end
 
   private
