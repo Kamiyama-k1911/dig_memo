@@ -62,17 +62,17 @@ class ArticlesController < ApplicationController
   def search
     @search_word = params[:search_word]
 
-    #ArticleItemのbodyとArticleのtitleそれぞれから検索された文字を抜き出す
+    # ArticleItemのbodyとArticleのtitleそれぞれから検索された文字を抜き出す
     article_items = ArticleItem.item_search(@search_word)
     articles = current_user.articles.search(@search_word)
 
-    #ArticleItemのbodyを含むArticleを取り出す
-    items_articles = current_user.articles.where(id: article_items.map{ |item| item.article_id } )
+    # ArticleItemのbodyを含むArticleを取り出す
+    items_articles = current_user.articles.where(id: article_items.map(&:article_id))
 
-    #articlesとitem_articlesを結合
+    # articlesとitem_articlesを結合
     total_articles = articles.or(items_articles)
 
-    #一覧表示
+    # 一覧表示
     @articles = total_articles.all.page(params[:page]).per(10)
   end
 

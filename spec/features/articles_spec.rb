@@ -268,7 +268,8 @@ RSpec.describe "Articles", js: true, type: :feature do
 
           click_button "投稿する"
         end
-        fit "検索内容が含まれるタイトルのメモが表示される" do
+
+        it "検索内容が含まれるタイトルのメモが表示される" do
           fill_in "検索フォーム", with: "ドイツ語"
           click_button "検索"
 
@@ -302,7 +303,7 @@ RSpec.describe "Articles", js: true, type: :feature do
     context "他のユーザーの投稿を操作しようとした場合" do
       let!(:takeshi_article) { create(:takeshi_article) }
 
-      fit "他のユーザーの投稿を編集できない" do
+      it "他のユーザーの投稿を編集できない" do
         visit edit_article_path(takeshi_article)
         expect(page).to have_content "他のユーザーの投稿の閲覧・編集はできません！"
         expect(page).to have_current_path articles_path
