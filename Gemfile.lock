@@ -98,8 +98,6 @@ GEM
     devise-i18n (1.9.2)
       devise (>= 4.7.1)
     diff-lcs (1.4.4)
-    enum_help (0.0.17)
-      activesupport (>= 3.0.0)
     erubi (1.9.0)
     execjs (2.7.0)
     factory_bot (6.1.0)
@@ -332,7 +330,6 @@ DEPENDENCIES
   devise
   devise-bootstrap-views (~> 1.0)
   devise-i18n
-  enum_help
   factory_bot_rails
   faker
   jquery-rails
