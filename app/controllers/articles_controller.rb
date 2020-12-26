@@ -120,10 +120,6 @@ class ArticlesController < ApplicationController
       params.require(:article).permit(:title, :category_id, :user_id)
     end
 
-    def article_item_params
-      params.require(:items).permit(:item1, :item2, :item3, :item4, :item5, :item6, :item7)
-    end
-
     def update_article_params
       params.require(:article).permit(:title, :category_id)
     end
