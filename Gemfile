@@ -19,6 +19,8 @@ gem "selenium-webdriver"
 gem "turbolinks", "~> 5"
 gem "webdrivers"
 gem "webpacker", "~> 5.x"
+gem "dotenv-rails"
+gem 'aws-sdk-rails', '~> 3'
 
 group :development, :test do
   gem "factory_bot_rails"
@@ -45,6 +47,10 @@ group :development do
   gem "rails-erd"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
+end
+
+group :production, :staging do
+    gem 'unicorn'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

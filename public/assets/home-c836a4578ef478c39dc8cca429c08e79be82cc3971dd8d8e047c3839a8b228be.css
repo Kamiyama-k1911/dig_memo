@@ -1,0 +1,167 @@
+/* line 18, app/assets/stylesheets/home.scss */
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  width: 80%;
+}
+
+/* line 22, app/assets/stylesheets/home.scss */
+.main-section {
+  background-image: url("/assets/fancy-cushion");
+  height: 700px;
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  position: relative;
+}
+
+/* line 29, app/assets/stylesheets/home.scss */
+.main-section__cover {
+  background-color: white;
+  max-width: 700px;
+  width: 80%;
+  padding: 80px 100px;
+  border-radius: 50%;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* line 36, app/assets/stylesheets/home.scss */
+.main-section__cover h2,
+.main-section__cover p {
+  color: black;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* line 43, app/assets/stylesheets/home.scss */
+.main-section__cover h2 {
+  font-family: "Pangolin", cursive;
+  font-weight: 200;
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+/* line 49, app/assets/stylesheets/home.scss */
+.main-section__cover p {
+  font-size: 1.5rem;
+}
+
+/* line 54, app/assets/stylesheets/home.scss */
+.main-section .speech-bubble {
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 63%;
+  left: 65%;
+  height: 55px;
+  width: 100px;
+}
+
+/* line 63, app/assets/stylesheets/home.scss */
+.main-section .speech-bubble:nth-child(2) {
+  height: 50px;
+  width: 80px;
+  top: 73%;
+  left: 77%;
+}
+
+/* line 69, app/assets/stylesheets/home.scss */
+.main-section .speech-bubble:nth-child(3) {
+  top: 82%;
+  left: 90%;
+  height: 40px;
+  width: 60px;
+}
+
+/* line 78, app/assets/stylesheets/home.scss */
+.description {
+  height: auto;
+  max-width: 1140px;
+  margin: 0 auto;
+  width: 80%;
+  text-align: center;
+  margin: 80px auto 0 auto;
+}
+
+/* line 84, app/assets/stylesheets/home.scss */
+.description__title {
+  margin: 0 0 10px;
+  font-weight: 700;
+}
+
+/* line 89, app/assets/stylesheets/home.scss */
+.description__subtitle {
+  font-weight: 700;
+}
+
+/* line 93, app/assets/stylesheets/home.scss */
+.description__text {
+  font-size: 1.2rem;
+}
+
+/* line 96, app/assets/stylesheets/home.scss */
+.description__movie {
+  max-width: 800px;
+  width: 90%;
+  height: auto;
+  border: 2px solid black;
+  border-radius: 20px;
+}
+
+/* line 105, app/assets/stylesheets/home.scss */
+.function {
+  margin: 80px 0;
+}
+
+/* line 107, app/assets/stylesheets/home.scss */
+.function__title {
+  text-align: center;
+}
+
+/* line 111, app/assets/stylesheets/home.scss */
+.function__wrapper {
+  max-width: 50%;
+  margin: 0 auto;
+  border: 10px black solid;
+  border-radius: 20px;
+  padding: 40px 0;
+}
+
+/* line 119, app/assets/stylesheets/home.scss */
+.function__item {
+  text-align: center;
+}
+
+/* line 122, app/assets/stylesheets/home.scss */
+.function__item span {
+  margin-left: 10px;
+}
+
+/* line 126, app/assets/stylesheets/home.scss */
+.function__item h3 {
+  margin: 0;
+}
+
+/* line 130, app/assets/stylesheets/home.scss */
+.function__item:nth-child(3) p {
+  margin: 0;
+}
+
+/* line 137, app/assets/stylesheets/home.scss */
+.footer {
+  height: 80px;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: relative;
+}
+
+/* line 141, app/assets/stylesheets/home.scss */
+.footer p {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}

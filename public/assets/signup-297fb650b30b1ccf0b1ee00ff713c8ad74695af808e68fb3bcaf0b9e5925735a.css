@@ -1,0 +1,16 @@
+/* line 1, app/assets/stylesheets/signup.scss */
+.mb {
+  margin-bottom: 30px;
+}
+
+/* line 5, app/assets/stylesheets/signup.scss */
+.button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* line 9, app/assets/stylesheets/signup.scss */
+.button .btn {
+  margin-bottom: 15px;
+}

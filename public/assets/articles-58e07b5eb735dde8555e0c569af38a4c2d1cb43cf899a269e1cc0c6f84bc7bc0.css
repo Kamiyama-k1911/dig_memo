@@ -1,0 +1,133 @@
+@charset "UTF-8";
+/* line 5, app/assets/stylesheets/articles.scss */
+li {
+  list-style: none;
+}
+
+/* line 7, app/assets/stylesheets/articles.scss */
+li a {
+  text-decoration: none;
+}
+
+/* line 12, app/assets/stylesheets/articles.scss */
+.fas {
+  font-size: 48px;
+}
+
+/* line 16, app/assets/stylesheets/articles.scss */
+.container {
+  max-width: 90%;
+  margin: 50px auto;
+}
+
+/* line 21, app/assets/stylesheets/articles.scss */
+.column-header {
+  flex-direction: column;
+  width: 25%;
+}
+
+/* line 24, app/assets/stylesheets/articles.scss */
+.column-header__list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+/* line 29, app/assets/stylesheets/articles.scss */
+.column-header__list__item:nth-child(2) {
+  margin: 0;
+}
+
+/* line 32, app/assets/stylesheets/articles.scss */
+.column-header__list__item a {
+  text-decoration: none;
+  color: white;
+}
+
+/* line 40, app/assets/stylesheets/articles.scss */
+.main {
+  width: 85%;
+  margin: 0 auto;
+}
+
+/* line 43, app/assets/stylesheets/articles.scss */
+.main .category-list-group-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* line 48, app/assets/stylesheets/articles.scss */
+.main .list-group-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* line 52, app/assets/stylesheets/articles.scss */
+.main .list-group-item ul:nth-child(1) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* line 58, app/assets/stylesheets/articles.scss */
+.main .list-group-item ul:nth-child(2) {
+  display: flex;
+  align-items: center;
+}
+
+/* line 65, app/assets/stylesheets/articles.scss */
+.new-form,
+.card {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+/* line 71, app/assets/stylesheets/articles.scss */
+#item-form {
+  padding: 0;
+}
+
+/* line 73, app/assets/stylesheets/articles.scss */
+#item-form .article-item__list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  width: 100%;
+}
+
+/* line 79, app/assets/stylesheets/articles.scss */
+#item-form .article-item__list__item {
+  margin-bottom: 20px;
+}
+
+/* line 85, app/assets/stylesheets/articles.scss */
+.article-item-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  width: 100%;
+}
+
+/* line 90, app/assets/stylesheets/articles.scss */
+.article-item-list__item {
+  margin-bottom: 30px;
+}
+
+/* line 92, app/assets/stylesheets/articles.scss */
+.article-item-list__item .card-title {
+  font-weight: 700;
+}
+
+/*カテゴリーリスト*/
+/* line 99, app/assets/stylesheets/articles.scss */
+#category-list {
+  display: flex;
+  flex-direction: column;
+}
+
+/*問い・自問自答のボタンリスト*/
+/* line 106, app/assets/stylesheets/articles.scss */
+.question-button-list li {
+  line-height: 38px;
+  margin-right: 20px;
+}

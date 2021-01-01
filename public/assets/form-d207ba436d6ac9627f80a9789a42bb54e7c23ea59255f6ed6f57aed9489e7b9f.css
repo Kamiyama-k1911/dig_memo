@@ -1,0 +1,5 @@
+/* line 2, app/assets/stylesheets/form.scss */
+#item-form__area {
+  display: flex;
+  flex-direction: column;
+}
