@@ -23,6 +23,8 @@ default: &default
 development:
   <<: *default
   database: dig_memo_development
+  password: root
+  host: 127.0.0.1
 
 test:
   <<: *default
