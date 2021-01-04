@@ -11,7 +11,7 @@
   /*作った問いをセレクトボックスに反映させる(答える問い)*/
   $(`.question-list`).append("<option value='<%= @article_questions.id %>'><%= @article_questions.question %></option>");
 
-  $("#flash").html(`<p class="alert alert-success mb-0"><%= flash.now[:notice] %></p>`)
+  $("#flash").html(`<p class="alert alert-success mb-0"><%= flash.now[:notice] %><button type="button" class="close" data-dismiss="alert">&times;</button></p>`)
 <% else %>
-  $(`div[id="createQuestionModal"]`).find(".modal-content").append(`<p class="alert alert-danger mb-0"><%= flash[:alert] %></p>`)
+  $(`div[id="createQuestionModal"]`).find(".modal-content").append(`<p class="alert alert-danger mb-0"><%= flash[:alert] %><button type="button" class="close" data-dismiss="alert">&times;</button></p>`)
 <% end %>
