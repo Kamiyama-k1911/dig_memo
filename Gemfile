@@ -3,12 +3,14 @@ git_source(:github) {|repo| "https://github.com/#{repo}.git" }
 
 ruby "2.7.1"
 
+gem "aws-sdk-rails", "~> 3"
 gem "bootsnap", ">= 1.4.2", require: false
 gem "bootstrap", "~> 5.0.0.alpha1"
 gem "capybara", ">= 2.15"
 gem "devise"
 gem "devise-bootstrap-views", "~> 1.0"
 gem "devise-i18n"
+gem "dotenv-rails"
 gem "jquery-rails"
 gem "kaminari"
 gem "mysql2"
@@ -19,8 +21,6 @@ gem "selenium-webdriver"
 gem "turbolinks", "~> 5"
 gem "webdrivers"
 gem "webpacker", "~> 5.x"
-gem "dotenv-rails"
-gem 'aws-sdk-rails', '~> 3'
 
 group :development, :test do
   gem "factory_bot_rails"
@@ -50,7 +50,7 @@ group :development do
 end
 
 group :production, :staging do
-    gem 'unicorn'
+  gem "unicorn"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

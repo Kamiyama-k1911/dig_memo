@@ -3,6 +3,5 @@ creds = Aws::Credentials.new(Rails.application.credentials[:aws][:access_key_id]
 Aws::Rails.add_action_mailer_delivery_method(
   :ses,
   credentials: creds,
-  region: 'ap-northeast-1' 
+  region: "ap-northeast-1",
 )
-

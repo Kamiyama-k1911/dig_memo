@@ -10,7 +10,8 @@
 #
 # Indexes
 #
-#  index_article_questions_on_user_id  (user_id)
+#  index_article_questions_on_question_and_user_id  (question,user_id) UNIQUE
+#  index_article_questions_on_user_id               (user_id)
 #
 # Foreign Keys
 #
