@@ -20,5 +20,5 @@ class ArticleQuestion < ApplicationRecord
   belongs_to :user
   has_many :article_items, dependent: :nullify
 
-  validates :question, presence: true
+  validates :question, presence: true, uniqueness: {scope: :user_id}
 end
