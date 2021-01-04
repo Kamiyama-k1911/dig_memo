@@ -26,7 +26,6 @@ class ArticleItem < ApplicationRecord
   def self.item_search(search)
     if search
       ArticleItem.where(["body LIKE ?", "%#{search}%"])
-      # && Article.where(["title LIKE ?", "%#{search}%"])
     end
   end
 end
