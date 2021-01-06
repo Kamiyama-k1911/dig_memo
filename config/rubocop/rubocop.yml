@@ -101,6 +101,9 @@ Lint/Void:
   # CheckForMethodsWithNoSideEffects: true
   Enabled: false
 
+Lint/SuppressedException:
+  Enabled: false
+
 #################### Metrics ###############################
 
 # 30 まではギリギリ許せる範囲だったけど
@@ -415,3 +418,7 @@ Style/WordArray:
 # 中身を入れ替えて否定外しても良いんだけど、どちらが例外的な処理なのかが分かりづらくなる。
 Style/ZeroLengthPredicate:
   Enabled: false
+
+#グローバル変数の使用を許可する
+GlobalVars:
+  AllowedVariables: [$worker, $timeout, $app_dir, $listen, $pid, $std_log]
