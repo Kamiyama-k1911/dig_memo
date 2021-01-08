@@ -41,7 +41,7 @@ jobs:
       - run:
           name: Yarnをinstall
           command: |
-            curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo -y
+            curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo
             sudo yarn install --cache-folder ~/.cache/yarn -y
       - run:
           name: Install chrome
