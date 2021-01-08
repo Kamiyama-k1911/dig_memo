@@ -28,6 +28,16 @@ jobs:
           paths:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+      - run:
+          name: yarn install
+          command: yarn install
+      - run:
+          name: Install chrome
+          command: |
+            wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+            echo 'deb http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
+            sudo apt update -y
+            sudo apt install -y google-chrome-stable
       # Database setup
       - run:
           name: Prepare db

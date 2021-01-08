@@ -173,7 +173,6 @@ GEM
       actionmailer (>= 3.2)
       letter_opener (~> 1.0)
       railties (>= 3.2)
-    libv8 (8.4.255.0)
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -188,8 +187,6 @@ GEM
     mimemagic (0.3.5)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
-    mini_racer (0.3.1)
-      libv8 (~> 8.4.255)
     minitest (5.14.2)
     msgpack (1.3.3)
     mysql2 (0.5.3)
@@ -382,7 +379,6 @@ DEPENDENCIES
   kaminari
   letter_opener_web
   listen (~> 3.2)
-  mini_racer
   mysql2
   pry-byebug
   pry-doc
