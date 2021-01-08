@@ -23,7 +23,7 @@ jobs:
           name: install dependencies
           command: |
             gem install bundler -v 2.0.1
-            gem install mini-racer
+            gem install mini_racer
             bundle install --jobs=4 --retry=3 --path vendor/bundle
       - save_cache:
           paths:
