@@ -40,8 +40,9 @@ jobs:
             - rails-demo-yarn-
       - run:
           name: Yarnをinstall
-          command: yarn install --cache-folder ~/.cache/yarn
-
+          command: |
+            curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
+            sudo yarn install --cache-folder ~/.cache/yarn -y
       - run:
           name: Install chrome
           command: |
