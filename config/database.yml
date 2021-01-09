@@ -35,4 +35,4 @@ test:
 production:
   <<: *default
   database: dig_memo_production
-  password: "<%= ENV['DB_PASSWORD'] %>"
+  password: <%= ENV['DB_PASSWORD'] %>
