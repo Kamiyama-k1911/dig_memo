@@ -30,9 +30,9 @@ test:
   <<: *default
   database: dig_memo_test
   password: root
-  host: <%= ENV['MYSQL_ROOT_HOST'] || '127.0.0.1' %>
+  host: "<%= ENV['MYSQL_ROOT_HOST'] || '127.0.0.1' %>"
 
 production:
   <<: *default
   database: dig_memo_production
-  password: <%= ENV['DB_PASSWORD'] %>
+  password: "<%= ENV['DB_PASSWORD'] %>"
