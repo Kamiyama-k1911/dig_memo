@@ -5,7 +5,7 @@ jobs:
       - image: circleci/ruby:2.7.1-buster
         environment:
           RAILS_ENV: test
-      - image: circleci/mysql:5.7-ram
+      - image: circleci/mysql:latest
         environment:
           MYSQL_DATABASE: digmemo_test
           MYSQL_ALLOW_EMPTY_PASSWORD: true
@@ -36,8 +36,8 @@ jobs:
             nvm install node
       - restore_cache:
           keys:
-            - rails-demo-yarn-{{ checksum "yarn.lock" }}
-            - rails-demo-yarn-
+            - digmemo-yarn-{{ checksum "yarn.lock" }}
+            - digmemo-yarn-
       - run:
           name: Yarnをinstall
           command: |
