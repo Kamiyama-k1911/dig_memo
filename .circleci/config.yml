@@ -8,7 +8,7 @@ jobs:
       - image: circleci/mysql:latest
         command: mysqld --default-authentication-plugin=mysql_native_password
         environment:
-          MYSQL_USER: root
+          MYSQL_USER: rootroot
           MYSQL_ROOT_PASSWORD: rootroot
           MYSQL_DATABASE: digmemo_test
           MYSQL_ROOT_HOST: "%"
