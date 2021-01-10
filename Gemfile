@@ -32,6 +32,7 @@ group :development, :test do
   gem "rspec-rails", "~> 4.0.1"
   gem "rubocop-rails"
   gem "rubocop-rspec"
+  gem "rubocop-faker"
 end
 
 group :test do
