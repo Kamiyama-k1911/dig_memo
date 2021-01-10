@@ -35,6 +35,7 @@ jobs:
             . ~/.nvm/nvm.sh
             nvm install 13.8.0
             nvm use 13.8.0
+            sudo apt install -y nodejs
       - restore_cache:
           keys:
             - digmemo-yarn-{{ checksum "yarn.lock" }}
