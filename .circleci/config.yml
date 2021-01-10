@@ -62,6 +62,10 @@ jobs:
       # run tests!
       - run: bundle exec bin/webpack
       - run:
+          name: Run Rubocop
+          command: |
+            rubocop --require rubocop-faker --only Faker/DeprecatedArguments --auto-correct
+      - run:
           name: Run rspec
           command: |
             mkdir /tmp/test-results
