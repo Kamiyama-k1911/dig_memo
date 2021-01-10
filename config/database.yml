@@ -18,18 +18,18 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV['MYSQL_USER'] || 'root' %>
+  username: root
 
 development:
   <<: *default
   database: dig_memo_development
-  password: <%= ENV['MYSQL_PASSWORD'] || 'root' %>
+  password: <%= ENV['MYSQL_ROOT_PASSWORD'] || 'root' %>
   host: <%= ENV['MYSQL_ROOT_HOST'] || '127.0.0.1' %>
 
 test:
   <<: *default
   database: dig_memo_test
-  password: <%= ENV['MYSQL_PASSWORD'] || 'root' %>
+  password: <%= ENV['MYSQL_ROOT_PASSWORD'] || 'root' %>
   host: <%= ENV['MYSQL_ROOT_HOST'] || '127.0.0.1' %>
 
 production:
