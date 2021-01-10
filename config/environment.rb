@@ -5,6 +5,7 @@ require_relative "application"
 Rails.application.initialize!
 
 Capybara.register_driver :selenium do |app|
+  browser_options = ::Selenium::WebDriver::Chrome::Options.new()
   browser_options.args << '--no-sandbox'
   Capybara::Selenium::Driver.new(app, browser: :chrome)
 end
