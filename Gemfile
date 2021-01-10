@@ -21,6 +21,7 @@ gem "selenium-webdriver"
 gem "turbolinks", "~> 5"
 gem "webdrivers"
 gem "webpacker", "~> 5.x"
+gem "mini_racer"
 
 group :development, :test do
   gem "factory_bot_rails"
@@ -31,6 +32,7 @@ group :development, :test do
   gem "rspec-rails", "~> 4.0.1"
   gem "rubocop-rails"
   gem "rubocop-rspec"
+  gem "rubocop-faker"
 end
 
 group :test do

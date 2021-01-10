@@ -23,14 +23,14 @@ default: &default
 development:
   <<: *default
   database: dig_memo_development
-  password: root
-  host: 127.0.0.1
+  password: <%= ENV['MYSQL_ROOT_PASSWORD'] || 'root' %>
+  host: <%= ENV['MYSQL_ROOT_HOST'] || '127.0.0.1' %>
 
 test:
   <<: *default
   database: dig_memo_test
-  password: root
-  host: 127.0.0.1
+  password: <%= ENV['MYSQL_ROOT_PASSWORD'] || 'root' %>
+  host: <%= ENV['MYSQL_ROOT_HOST'] || '127.0.0.1' %>
 
 production:
   <<: *default
