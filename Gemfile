@@ -13,6 +13,7 @@ gem "devise-i18n"
 gem "dotenv-rails"
 gem "jquery-rails"
 gem "kaminari"
+gem "mini_racer"
 gem "mysql2"
 gem "puma", "~> 4.1"
 gem "rails", "~> 6.0.3", ">= 6.0.3.2"
@@ -21,7 +22,6 @@ gem "selenium-webdriver"
 gem "turbolinks", "~> 5"
 gem "webdrivers"
 gem "webpacker", "~> 5.x"
-gem "mini_racer"
 
 group :development, :test do
   gem "factory_bot_rails"
@@ -30,9 +30,9 @@ group :development, :test do
   gem "pry-doc"
   gem "pry-rails"
   gem "rspec-rails", "~> 4.0.1"
+  gem "rubocop-faker"
   gem "rubocop-rails"
   gem "rubocop-rspec"
-  gem "rubocop-faker"
 end
 
 group :test do
