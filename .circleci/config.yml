@@ -5,6 +5,7 @@ jobs:
       - image: circleci/ruby:2.7.1-buster
         environment:
           RAILS_ENV: test
+          HEADLESS: true
       - image: circleci/mysql:latest
         command: mysqld --default-authentication-plugin=mysql_native_password
         environment:
