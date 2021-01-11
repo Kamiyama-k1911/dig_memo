@@ -6,7 +6,7 @@ Rails.application.initialize!
 
 Capybara.register_driver :selenium do |app|
   browser_options = ::Selenium::WebDriver::Chrome::Options.new
-  if ENV['HEADLESS']
+  if ENV["HEADLESS"]
     browser_options.args << "--headless"
   end
   browser_options.args << "--no-sandbox"
