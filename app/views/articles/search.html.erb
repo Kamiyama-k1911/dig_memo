@@ -1,9 +1,9 @@
 <main class="main">
   <% if @search_word == "" %>
-    <h2 class="mb-4">検索ワードに一致するメモは見つかりませんでした</h2>
+  <h2 class="mb-4">検索ワードに一致するメモは見つかりませんでした</h2>
   <% else %>
-    <h2 class="mb-4">”<%= @search_word%>” を含むメモ　<%= @articles.length %>件</h2>
-    <%= render partial: "shared/article_index", locals: { articles: @articles, subject: "検索結果"}%>
-    <%= paginate @articles %>
+  <h2 class="mb-4">”<%= @search_word%>” を含むメモ　<%= @search_result.length %>件</h2>
+  <%= render partial: "shared/article_index", locals: { articles: @search_result, subject: "検索結果"}%>
+  <%= paginate @search_result %>
   <% end %>
 </main>
