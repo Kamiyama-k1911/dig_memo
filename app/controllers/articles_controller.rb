@@ -63,8 +63,8 @@ class ArticlesController < ApplicationController
     @search_word = params[:search_word]
     articles = current_user.articles
 
-    @inner_join = articles.joins(:article_items).select('articles.*, article_items.body')
-    @search_result = @inner_join.search(@search_word,@inner_join).page(params[:page]).per(10)
+    @inner_join = articles.joins(:article_items).select("articles.*, article_items.body")
+    @search_result = @inner_join.search(@search_word, @inner_join).page(params[:page]).per(10)
   end
 
   private
