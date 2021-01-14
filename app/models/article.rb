@@ -27,12 +27,6 @@ class Article < ApplicationRecord
 
   validates :title, presence: true
 
-  # def self.search(search)
-  #   if search
-  #     Article.where(["title LIKE ?", "%#{search}%"])
-  #   end
-  # end
-
   def self.search(search, joins_model)
     if search
       joins_model.where(["title LIKE ?", "%#{search}%"]).or(joins_model.where(["body LIKE ?", "%#{search}%"]))
